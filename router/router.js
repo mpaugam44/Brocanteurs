@@ -5,6 +5,8 @@ import connexionSubmit from "../controllers/login.js";
 import isLogged from "../controllers/isLogged.js";
 //import showForm from "../controllers/addarticle.js";
 //import addArticle from "..controllers/addarticle.js";
+import SelectSubCategories from "../controllers/selectXcategories.js"
+//import getSelectedCategories from "../controllers/getSelectedCategories.js"
 
 const router = express.Router();
 
@@ -17,6 +19,10 @@ router.get("/api/isLogged", isLogged); // route back de la co  de l'utilisateur
 //router.get("/api/form", showForm); 
 
 //router.post("/api/add", addArticle);
+
+router.get("/api/selectXcategories", SelectSubCategories); 
+
+//router.post("/api/selectXcategories", getSelectedCategories)
 
 
 

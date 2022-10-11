@@ -7,16 +7,42 @@ const port = 9300;
 const BASE_URL = `${host}:${port}`;
 
 
-const  selectSubcategories = ( req, res) => {
+const  SelectSubCategories = ( req, res) => {
     
-    let selectXcategories = 'SELECT categories.name,vinyle.id FROM categories JOIN vinyle ON vinyle.id = categories.vinyle_id'
+    let sqlCategorie = 'SELECT categories.name, categories.id FROM categories'
+    let sqlGenre = 'SELECT * FROM genres'
+    let sqlDecennie = 'SELECT * FROM decennie'
+    let sqlMarque = 'SELECT * FROM marque'
  
-    pool.query(selectXcategories , ( error, categories, fields)=> {
+    pool.query(sqlCategorie , ( error, categories, fields)=> {
         if(error) throw error; 
-        res.json ('addarticle.jsx', {
-        categories
-        })
+        pool.query(sqlGenre , ( error, genres, fields)=> {
+            if(error) throw error; 
+            pool.query(sqlDecennie , ( error, decennie, fields)=> {
+                if(error) throw error; 
+                pool.query(sqlMarque , ( error, marque, fields)=> {
+                    if(error) throw error; 
+                    res.json ({response:true , categories, genres, decennie, marque})
+                })
+            })
+        })    
     })
     
     
 }
+
+
+
+
+/*const getSelectedCategories = ( req, res) => {
+    let sql1 = ' INSERT categories.name into articles.id WHERE value (?)'
+    
+    pool.query (sql1 , (error, categories, fields) => {
+        if (error) throw error ; 
+        res.json ('')
+    })
+    
+    
+}
+*/
+export default SelectSubCategories ;

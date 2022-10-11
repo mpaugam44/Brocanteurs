@@ -34,6 +34,7 @@ const Nav = (props) => {
               LOGIN
             </NavLink>
           </li>
+          
         </Fragment>
         }
         {state.login && 
@@ -43,6 +44,11 @@ const Nav = (props) => {
                 PROFIL
               </NavLink>
             </li>
+            <li>
+            <NavLink to="/selectXcategories">
+              SELECTION
+            </NavLink>
+          </li>
             <li>
               <NavLink to="/logout">
                 LOGOUT

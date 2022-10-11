@@ -1,7 +1,12 @@
 import {useEffect, Fragment, useState} from 'react'
 import BASE_URL from "../config.js"
 import axios from 'axios'
+//import {Selection} from '/selectXcategories.jsx'
+//import {upload} from '/upLoadFile.jsx'
 
+
+
+const [Selection, setSelection] = useState(); 
 
 const Addarticle =() => {
     const [categories , setCategories] = useState([]);
@@ -15,6 +20,8 @@ const Addarticle =() => {
         e.preventDefault()
         console.log(e.target.categories)
         
+        
+        
     
     /*const form = new FormData();
     form.append('categories', e.target.categories);
@@ -25,6 +32,26 @@ const Addarticle =() => {
     
     
     }
+    
+    /*useEffect(() => {
+    
+            axios.get(`${BASE_URL}/selectXcategories`)
+            .then((res) => {
+            console.log(res);
+                if (res.data.response === true) {
+                    setCategories(res.data.categories)
+                    setGenres(res.data.genres)
+                    setDecennies(res.data.decennie)
+                    setMarques(res.data.marque)
+                }
+                else {
+                window.alert("Veuillez choisir une catégorie ")
+                }
+            })
+            .catch((err) =>{
+            console.log(err);
+            })
+        },[])*/
     
     
     
