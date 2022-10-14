@@ -3,17 +3,18 @@ import {LOGIN, LOGOUT, ADMIN} from '../../config/constante.js'
 
 export const initialState = {
     login: false,
-    admin:false
+    admin:false,
+    userid:null
 }
 
 export const reducer = (state, action) => {
     switch(action.type){
         case LOGIN :
-            return {...state, login:true}
+            return {...state, login:true, userid:action.payload}
         case ADMIN :
             return {...state, admin:true}
         case LOGOUT :
-            return {...state, login:false,  admin:false}
+            return {...state, login:false,  admin:false, userid:null}
         default: return state 
     }
 }

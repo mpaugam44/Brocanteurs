@@ -23,7 +23,7 @@ const Login = () => {
         axios.post(`${BASE_URL}/login`, dataUser)
         .then((res) => {
             if(res.data.response){
-                dispatch({type:LOGIN})
+                dispatch({type:LOGIN, payload:res.data.id})
                 res.data.admin && dispatch({type:ADMIN})
                 navigate("/",{replace:true})
             } 

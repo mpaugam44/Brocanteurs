@@ -49,6 +49,12 @@ const Nav = (props) => {
               SELECTION
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/addArticle">
+              Addarticle
+            </NavLink>
+          </li>
+          
             <li>
               <NavLink to="/logout">
                 LOGOUT

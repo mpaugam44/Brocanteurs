@@ -7,7 +7,7 @@ const port = 9300;
 const BASE_URL = `${host}:${port}`;
 
 
-const  SelectSubCategories = ( req, res) => {
+const  SelectXCategories = ( req, res) => {
     
     let sqlCategorie = 'SELECT categories.name, categories.id FROM categories'
     let sqlGenre = 'SELECT * FROM genres'
@@ -45,4 +45,4 @@ const  SelectSubCategories = ( req, res) => {
     
 }
 */
-export default SelectSubCategories ;
+export default SelectXCategories ;

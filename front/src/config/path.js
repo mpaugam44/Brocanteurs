@@ -4,7 +4,8 @@ import Register from "../components/register";
 import Profil from "../components/profil";
 import Admin from "../components/admin";
 import Logout from "../components/logout";
-import SelectXcategories from "../components/selectXcategories";
+import AddArticle from "../components/addarticle";
+
 
 export const routes = [
     { path:'/', element:<Home /> },
@@ -13,7 +14,8 @@ export const routes = [
     { path:'/profil', element:<Profil /> },
     { path:'/admin', element:<Admin /> },
     { path:'/logout', element:<Logout /> },
-    { path : '/selectXcategories', element:<SelectXcategories/> }
+    { path : '/addArticle', element:<AddArticle/> },
+   
 ]
 
 

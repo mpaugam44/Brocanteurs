@@ -1,20 +1,24 @@
-import {useEffect, Fragment, useState, useContext} from 'react'
+import {useEffect, Fragment, useState} from 'react'
 import BASE_URL from "../config.js"
 import axios from 'axios'
-import {ReducerContext} from "./reducer/reducer"
-import {useNavigate} from "react-router-dom";
 
-const Selection  =()=>{
-    const [state, dispatch] = useContext( ReducerContext) 
+const Selection=({updateForm})=>{
     
     const showMarque=["2","3","4"]
     const showDecennies=["2","3","4","5"]
+    
+    const [allData, setAllData] = useState({
+            categorie:null,
+            marque:null,
+            genre:null,
+            decennie:null,
+            vinyle:null,
+        });
     
     const [categories, setCategories] = useState([]);
     const [genres, setGenres] = useState([]);
     const [decennies, setDecennies] = useState([]);
     const [marques, setMarques] = useState([]);
-    const navigate = useNavigate();
     
     
     const [vinyle, setVinyle] = useState("33");
@@ -23,64 +27,59 @@ const Selection  =()=>{
     const [genre, setGenre]= useState(2);
     const [decennie, setDecennie]= useState(2);
     
-        useEffect(() => {
-    
-            axios.get(`${BASE_URL}/selectXcategories`)
-            .then((res) => {
-            console.log(res);
-                if (res.data.response === true) {
-                    setCategories(res.data.categories)
-                    setGenres(res.data.genres)
-                    setDecennies(res.data.decennie)
-                    setMarques(res.data.marque)
-                }
-                else {
+    useEffect(() => {
+        axios.get(`${BASE_URL}/selectXcategories`)
+        .then((res) => {
+            
+            if (res.data.response === true) {
+                setCategories(res.data.categories)
+                setGenres(res.data.genres)
+                setDecennies(res.data.decennie)
+                setMarques(res.data.marque)
+            } else {
                 window.alert("Veuillez choisir une catégorie ")
-                }
-            })
-            .catch((err) =>{
+            }
+        })
+        .catch((err) =>{
             console.log(err);
-            })
-        },[])
-        
-        
-        /*const submit = (e) => {
-            e.preventDefault()
-            
-            let data = {
-                    marque,
-                    decennie,
-                    categories:selectCategories,
-                }
-            
-            if(selectCategories ==='5'){
-                data = {
-                    decennie,
-                    genre,
-                    categories:selectCategories,
-                    vinyle
-                }  
-            } 
-            
-            // completer URL
-            // creer la route côté Back
-            // creer le controller côté Back
-            axios.post(`${BASE_URL}/`,data)
-            .then((res) => {
-                console.log(res)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-        }*/
+        })
+    },[])
     
+    const handleChange = (value, type) => {
+        const data = {
+            ...allData
+        }
+        if(type === 'categorie'){
+            setSelectCategories(value)
+            data.categorie = value
+            setAllData(data)
+        } else if(type === 'marque'){
+            setMarque(value)
+            data.marque = value
+            setAllData(data)
+        } else if(type === 'vinyle'){
+            setVinyle(value)
+            data.vinyle = value
+            setAllData(data)
+        } else if(type === 'genre'){
+            setGenre(value)
+            data.genre = value
+        } else if(type === 'decennie'){
+            setDecennie(value)
+            data.decennie = value
+            setAllData(data)
+        }
+        
+        updateForm(data)
+    }
+        
     return (
         
         <div>
             <h3>Choisissez votre catégorie</h3>
             <label>
                 Categorie:
-                <select value={selectCategories} onChange={(e) => setSelectCategories(e.target.value)}>
+                <select value={selectCategories} onChange={(e) => handleChange(e.target.value,'categorie')}>
                     {categories[0] && categories.map((e,i) => 
                         <option key={i} value={e.id}>{e.name}</option>
                     )}
@@ -88,51 +87,51 @@ const Selection  =()=>{
                 </select>
             </label>
             
-            
-                {showMarque.includes(selectCategories) && 
-                    <label>
-                    Marque
-                        <select value={marque} onChange={(e) => setMarque(e.target.value)}>
-                            {marques[0] && marques.map((e,i) => <option key={i} value={e.id}>{e.name}</option>)}
-                        </select>
-                        
-                    </label>
-                }
-            
-            
-                {selectCategories === "5" && 
-                    <Fragment>
-                        <label>
-                            type Vinyle
-                            <select value={vinyle} onChange={(e) => setVinyle(e.target.value)}>
-                                <option value="33">33</option>
-                                <option value="45">45</option>
-                            </select>
-                            
-                        </label>
-                        <label>
-                            Genre
-                            <select value={genre} onChange={(e) => setGenre(e.target.value)}>
-                                {genres[0] && genres.map((e,i) => <option key={i} value={e.id}>{e.name}</option>)}
-                            </select>
-                        </label>
-                    </Fragment>
-                }
-            
-            {showDecennies.includes(selectCategories) && 
+            {showMarque.includes(selectCategories) && 
                 <label>
-                    Decennies
-                    <select value={decennie} onChange={(e) => setDecennie(e.target.value)}>
-                            {decennies[0] && decennies.map((e,i) => <option key={i} value={e.id}>{e.date}</option>)}
+                    Marque
+                    <select value={marque} onChange={(e) => handleChange(e.target.value,'marque')}>
+                        {marques[0] && marques.map((e,i) => {
+                            return (<option key={i} value={e.id}>{e.name}</option>)})
+                        }
                     </select>
                 </label>
             }
             
+            {selectCategories === "5" && 
+                <Fragment>
+                    <label>
+                        type Vinyle
+                        <select value={vinyle} onChange={(e) => handleChange(e.target.value,'vinyle')}>
+                            <option value="1">33 RPM</option>
+                            <option value="2">45 RPM</option>
+                        </select>
+                    </label>
+                    <label>
+                        Genre
+                        <select value={genre} onChange={(e) => handleChange(e.target.value,'genre')}>
+                            {genres[0] && genres.map((e,i) => { 
+                                return (
+                                    <option key={i} value={e.id}>{e.name}</option>)}
+                                )
+                            }
+                        </select>
+                    </label>
+                </Fragment>
+            }
+            
+            {showDecennies.includes(selectCategories) && 
+                <label>
+                    Decennies
+                    <select value={decennie} onChange={(e) => handleChange(e.target.value,'decennie')}>
+                        {decennies[0] && decennies.map((e,i) => {
+                            return(<option key={i} value={e.id}>{e.date}</option>)})
+                        }
+                    </select>
+                </label>
+            }
         </div>
-    
     );
-    
 }
-//<button onClick={submit}>Valider</button>
 
 export default Selection

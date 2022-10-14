@@ -17,18 +17,33 @@ const uploadFile = (req, res) => {
     form.parse(req, (err, fields, files) => {
         if (err) throw err;
         
-        let newFilename = files.files.newFilename;
-        let oldPath = files.files.filepath;
-
-        let newPath = `public/img/${newFilename}`;
-        
-        const file = files.files
-        if(files.originalFilename !== ''){
-            if(checkAcceptedExtensions(file)){
-                fs.copyFile(oldPath, newPath, (err) => {
-                    if (err) throw err;
-                    res.json({response:true})
-                }) 
+        if(!files.files.length){
+            let newFilename = files.files.newFilename;
+            let oldPath = files.files.filepath;
+            let newPath = `public/img/${newFilename}`;
+            const file = files.files
+            if(files.originalFilename !== ''){
+                if(checkAcceptedExtensions(file)){
+                    fs.copyFile(oldPath, newPath, (err) => {
+                        if (err) throw err;
+                        res.json({response:true})
+                    }) 
+                }
+            }
+        } else {
+            for(let i = 0; i < files.files.length; i++) {
+                const file = files.files[i]
+                let newFilename = file.newFilename;
+                let oldPath = file.filepath;
+                let newPath = `public/img/${newFilename}`;
+                if(files.originalFilename !== ''){
+                    if(checkAcceptedExtensions(file)){
+                        fs.copyFile(oldPath, newPath, (err) => {
+                            if (err) throw err;
+                            res.json({response:true})
+                        }) 
+                    }
+                }
             }
         }
     })

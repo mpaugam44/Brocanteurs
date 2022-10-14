@@ -3,7 +3,7 @@ import pool from '../config/database.js';
 
 
 const connexionSubmit = (req,res) => {
-    let getPasswordSQL = "SELECT password,role_id FROM users WHERE email = ?";
+    let getPasswordSQL = "SELECT password,role_id,id FROM users WHERE email = ?";
     
     const msgError = "identifiant ou mot de passe incorrect"
     
@@ -27,9 +27,10 @@ const connexionSubmit = (req,res) => {
 
                     const admin = user[0].role_id === 1 
                     const name = user[0].email
+                    const id = user[0].id
                     req.session.admin = admin
                     req.session.isLogged = true
-                    res.json({response:true, admin, name});
+                    res.json({response:true, admin, name, id});
                 }
             });
         }
