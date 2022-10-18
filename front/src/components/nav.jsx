@@ -34,6 +34,12 @@ const Nav = (props) => {
               LOGIN
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/article">
+              Articles
+            </NavLink>
+          </li>
+          
           
         </Fragment>
         }
@@ -54,8 +60,7 @@ const Nav = (props) => {
               Addarticle
             </NavLink>
           </li>
-          
-            <li>
+          <li>
               <NavLink to="/logout">
                 LOGOUT
               </NavLink>

@@ -8,11 +8,22 @@ const BASE_URL = `${host}:${port}`
 
 
 
-const detailShow = (req, res) => {
+const ArticlesDetails = (req, res) => {
     
-    let sql = 'SELECT title, description FROM articles WHERE id = ?';
+   
+    // let  artDetails = ' SELECT date, title, description, categorie_id, id_marque, id_vinyle , price FROM articles WHERE id = ( ?)  '
     
+    //let 
 }    
 
 
-export default detailShow
+const AddComs = (req, res) => {
+    
+    
+    
+    
+}
+
+
+
+export {ArticlesDetails, AddComs}

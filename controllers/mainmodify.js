@@ -16,7 +16,7 @@ const BASE_URL = `${host}:${port}`;
             console.log(article)
             pool.query(allCategories, (error, categories, fields) => {
                 if (error) throw error
-                res.render('mainmodify.jsx', {
+                res.json('mainmodify.jsx', {
                 base_url: BASE_URL,
                 article: article[0],
                 categories

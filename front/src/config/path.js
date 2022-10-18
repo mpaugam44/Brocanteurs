@@ -5,6 +5,7 @@ import Profil from "../components/profil";
 import Admin from "../components/admin";
 import Logout from "../components/logout";
 import AddArticle from "../components/addarticle";
+import ShowArticle from "../components/articles"
 
 
 export const routes = [
@@ -14,7 +15,8 @@ export const routes = [
     { path:'/profil', element:<Profil /> },
     { path:'/admin', element:<Admin /> },
     { path:'/logout', element:<Logout /> },
-    { path : '/addArticle', element:<AddArticle/> },
+    { path :'/addArticle', element:<AddArticle/> },
+    { path :'/article', element:<ShowArticle/> },
    
 ]
 

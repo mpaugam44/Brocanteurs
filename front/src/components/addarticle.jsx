@@ -21,7 +21,7 @@ const Addarticle = () => {
     const submit = (e) => {
         e.preventDefault()
         const files = {...e.target.avatar.files}
-        // trouver le moyen de dégager avatr 
+        // trouver le moyen de dégager avatar 
         const dataFile = new FormData();
         dataFile.append('files', files[0], files[0].name)
         dataFile.append('titre', titre)
@@ -34,7 +34,7 @@ const Addarticle = () => {
         categories.vinyle && dataFile.append('vinyle', categories.vinyle)
         dataFile.append('userid', state.userid)
         dataFile.append('prix', prix)
-        //à commenter en détail 
+        //on ajoute un par un les fichiers de notre front pour les orienter vers notre bdd via notre back end 
         axios.post(`${BASE_URL}/addArticle`,dataFile)
         .then((res) => {
             if(res.data.response){
