@@ -19,6 +19,8 @@ app.use(session({
 	cookie: {maxAge: 3600000}
 }))
 
+app.use(express.static('public'));
+// on permet l'accès à public grâce à notre app.use avec express
 
 
 app.use('/', router)

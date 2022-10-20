@@ -26,7 +26,6 @@ const Addarticle = () => {
         dataFile.append('files', files[0], files[0].name)
         dataFile.append('titre', titre)
         dataFile.append('description', description)
-        
         categories.categorie && dataFile.append('categories', categories.categorie)
         categories.marque && dataFile.append('marque', categories.marque)
         categories.genre && dataFile.append('genre', categories.genre)
@@ -56,6 +55,7 @@ const Addarticle = () => {
    
     return (
         <form onSubmit={submit} encType="multipart/form-data">
+            {console.log(state)}
             <label>
                 Titre
                 <input type='text' value={titre} onChange={(e) => setTitre(e.target.value)} />

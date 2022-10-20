@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { ReducerContext } from "./reducer/reducer.jsx";
-import {useContext, Fragment, useEffect} from "react"
+import {useContext, Fragment} from "react"
 
 const Nav = (props) => {
  const [state, dispatch] = useContext(ReducerContext)
@@ -35,8 +35,13 @@ const Nav = (props) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/article">
+            <NavLink to="/articles">
               Articles
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/articledetails">
+              Article Details
             </NavLink>
           </li>
           
@@ -58,6 +63,16 @@ const Nav = (props) => {
           <li>
             <NavLink to="/addArticle">
               Addarticle
+            </NavLink>
+          </li>
+           <li>
+            <NavLink to="/articles">
+              Articles
+            </NavLink>
+          </li>
+           <li>
+            <NavLink to="/articledetails">
+              Article Details
             </NavLink>
           </li>
           <li>
