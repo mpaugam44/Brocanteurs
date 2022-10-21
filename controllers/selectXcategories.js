@@ -34,15 +34,5 @@ const  SelectXCategories = ( req, res) => {
 
 
 
-/*const getSelectedCategories = ( req, res) => {
-    let sql1 = ' INSERT categories.name into articles.id WHERE value (?)'
-    
-    pool.query (sql1 , (error, categories, fields) => {
-        if (error) throw error ; 
-        res.json ('')
-    })
-    
-    
-}
-*/
+
 export default SelectXCategories ;

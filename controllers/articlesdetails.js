@@ -9,27 +9,27 @@ const BASE_URL = `${host}:${port}`
 
 
 const articleDetails = (req, res) => {
-    // const {id} = req.params; 
-    // let thisArticle = ' SELECT * FROM articles WHERE id = ?'
-    // let getUrl = 'SELECT url FROM pictures WHERE article_id = ? '
-    // let getComs = 'SELECT * FROM commentaires WHERE article_id = ?  '
-    // pool.query(thisArticle, [id],  ( err, article, fields) => {
-    //     //on doit spécifier ce qu'on va chercher dans notre pool.query
-    //     if(err) throw err 
-    //     pool.query(getUrl, [id],(err,url,fields)=> {
-    //     // requête pour aller chercher l'url  de pictures dans notre bdd
-    //         if(err) throw err
-    //             pool.query(getComs, [id],(err,commentaires,fields)=> {
-    //                 if(err) throw err
+     const {id} = req.params; 
+     let thisArticle = ' SELECT * FROM articles WHERE id = ?'
+     let getUrl = 'SELECT url FROM pictures WHERE article_id = ? '
+     let getComs = 'SELECT * FROM commentaire WHERE article_id = ?  '
+     pool.query(thisArticle, [id],  ( err, article, fields) => {
+         //on doit spécifier ce qu'on va chercher dans notre pool.query
+         if(err) throw err 
+         pool.query(getUrl, [id],(err,url,fields)=> {
+         // requête pour aller chercher l'url  de pictures dans notre bdd
+             if(err) throw err
+                 pool.query(getComs, [id],(err,commentaire,fields)=> {
+                     if(err) throw err
                 
-                // res.json({response:true,article,url,commentaires})
-                res.json({response:true})    
-    //             })    
+                 res.json({response:true,article,url,commentaire})
+                
+                 })    
         
-    //     console.log(url)
-    //     })
+         console.log(url)
+         })
         
-    // })
+     })
     
 }   
 

@@ -2,7 +2,7 @@ import pool from '../index.js'
 import formidable from 'formidable'
 import fs from 'fs'
 
-const host = "http://juliengodard.sites.3wa.io";
+const host = "http://http://martinpaugam.sites.3wa.io:9001/";
 const port = 9300;
 const BASE_URL = `${host}:${port}`;
 

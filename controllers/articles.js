@@ -7,10 +7,10 @@ const BASE_URL = `${host}:${port}`;
 
 const showArticle = ( req, res) => {
     const {id} = req.params; 
-    let thisArticle = ' SELECT * FROM articles'
+    let thisArticle = ' SELECT articles.*,pictures.url FROM articles JOIN pictures ON pictures.article_id = articles.id'
     
-    pool.query( thisArticle, ( error, article, fields) => {
-        
+    pool.query( thisArticle,( error, article, fields) => {
+        console.log(article)
         res.json({response:true,article})
         
     })
