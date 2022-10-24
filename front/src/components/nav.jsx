@@ -1,7 +1,7 @@
-import { NavLink } from "react-router-dom";
+
+/*import { NavLink } from "react-router-dom";
 import { ReducerContext } from "./reducer/reducer.jsx";
 import {useContext, Fragment} from "react"
-
 const Nav = (props) => {
  const [state, dispatch] = useContext(ReducerContext)
  
@@ -13,7 +13,37 @@ const Nav = (props) => {
       
       
     };
-  };
+  };*/
+  
+import { NavLink } from "react-router-dom";
+import {useContext, Fragment, useEffect} from "react"
+import { ReducerContext } from "./reducer/reducer";
+import BASE_URL from '../config/Api';
+import {LOGIN,ADMIN} from '../config/constante.js';
+import axios from 'axios';
+
+
+const Nav = (props) => {
+  
+  const [state, dispatch] = useContext(ReducerContext)
+  
+  useEffect(() => {
+    const token = localStorage.getItem("jwtToken")
+    if(!state.login && token){
+      axios.post(`${BASE_URL}/isLogged`,{token})
+      .then((res) => {
+        if(res.data.token){
+          axios.defaults.headers.common['Authorization'] = 'Bearer '+res.data.token
+        }
+        res.data.response && dispatch({type:LOGIN, payload:res.data.id})
+        res.data.admin && dispatch({type:ADMIN})
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
+  })
+  
   return (
     <nav>
       <ul>

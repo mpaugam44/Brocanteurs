@@ -1,5 +1,5 @@
 import fs from 'fs'
-import pool from '../config/database.js'
+import {pool} from '../config/database.js'
 
 
 const host = "http://http://martinpaugam.sites.3wa.io:9001/"

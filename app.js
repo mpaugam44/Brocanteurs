@@ -3,26 +3,17 @@ import cors from "cors"
 import bodyParser from 'body-parser'
 const app = express();
 import router from './router/router.js';
-import session from 'express-session';
-import mysql from "mysql";
+import middleware from './controllers/middleware.js'
 
 
 app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
 
-//initialisation du système de sessions
-app.use(session({
-	secret: 'la brocante du flux',
-	resave:false,
-	saveUninitialized: true,
-	cookie: {maxAge: 3600000}
-}))
-
 app.use(express.static('public'));
 // on permet l'accès à public grâce à notre app.use avec express
 
-
+app.use(middleware)
 app.use('/', router)
 
 
