@@ -42,8 +42,8 @@ const addArticle = (req, res) => {
     */
     form.parse(req, (err, fields, files) => {
            console.log(fields) 
-        const sqlCreatArticle = 'INSERT INTO articles (title,date,description,categorie_id,id_marque,id_vinyle,price,user_id) VALUES (?,?,?,?,?,?,?,?)'
-        const paramsSqlCreatArticle = [fields.titre,new Date(),fields.description,fields.categories,fields.marque,fields.vinyle,fields.prix,fields.userid]
+        const sqlCreatArticle = 'INSERT INTO articles (title,date,description,categorie_id,id_marque,id_vinyle,price,user_id,decennie_ID,genre_ID) VALUES (?,?,?,?,?,?,?,?,?,?)'
+        const paramsSqlCreatArticle = [fields.titre,new Date(),fields.description,fields.categories,fields.marque,fields.vinyle,fields.prix,fields.userid,fields.decennie_ID,fields.genre_ID]
         pool.query(sqlCreatArticle,paramsSqlCreatArticle,(error, result) => {
             if (error) throw error;
             const sqlGetID = 'SELECT id from articles ORDER BY id DESC LIMIT 1'

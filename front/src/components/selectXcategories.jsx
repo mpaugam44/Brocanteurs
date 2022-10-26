@@ -2,17 +2,17 @@ import {useEffect, Fragment, useState} from 'react'
 import BASE_URL from "../config.js"
 import axios from 'axios'
 
-const Selection=({updateForm})=>{
+const Selection=({updateForm, value})=>{
     
     const showMarque=["2","3","4"]
     const showDecennies=["2","3","4","5"]
     
     const [allData, setAllData] = useState({
-            categorie:null,
-            marque:null,
-            genre:null,
-            decennie:null,
-            vinyle:null,
+            categorie:"2",
+            marque:"2",
+            genre:"2",
+            decennie:"2",
+            vinyle:"33",
         });
     
     const [categories, setCategories] = useState([]);
@@ -21,11 +21,12 @@ const Selection=({updateForm})=>{
     const [marques, setMarques] = useState([]);
     
     
-    const [vinyle, setVinyle] = useState("33");
-    const [selectCategories, setSelectCategories]= useState(2);
-    const [marque, setMarque]= useState(2);
-    const [genre, setGenre]= useState(2);
-    const [decennie, setDecennie]= useState(2);
+    useEffect(() => {
+        if(value){
+            console.log('ici')
+            setAllData(value)
+        }
+    },[])
     
     useEffect(() => {
         axios.get(`${BASE_URL}/selectXcategories`)
@@ -49,37 +50,19 @@ const Selection=({updateForm})=>{
         const data = {
             ...allData
         }
-        if(type === 'categorie'){
-            setSelectCategories(value)
-            data.categorie = value
-            setAllData(data)
-        } else if(type === 'marque'){
-            setMarque(value)
-            data.marque = value
-            setAllData(data)
-        } else if(type === 'vinyle'){
-            setVinyle(value)
-            data.vinyle = value
-            setAllData(data)
-        } else if(type === 'genre'){
-            setGenre(value)
-            data.genre = value
-        } else if(type === 'decennie'){
-            setDecennie(value)
-            data.decennie = value
-            setAllData(data)
-        }
-        
+        data[type] = value
+        setAllData(data)
         updateForm(data)
     }
         
     return (
         
         <div>
+        {console.log(allData)}
             <h3>Choisissez votre catégorie</h3>
             <label>
                 Categorie:
-                <select value={selectCategories} onChange={(e) => handleChange(e.target.value,'categorie')}>
+                <select value={allData.categorie}  onChange={(e) => handleChange(e.target.value,'categorie')}>
                     {categories[0] && categories.map((e,i) => 
                         <option key={i} value={e.id}>{e.name}</option>
                     )}
@@ -87,10 +70,10 @@ const Selection=({updateForm})=>{
                 </select>
             </label>
             
-            {showMarque.includes(selectCategories) && 
+            {showMarque.includes(allData.categorie) && 
                 <label>
                     Marque
-                    <select value={marque} onChange={(e) => handleChange(e.target.value,'marque')}>
+                    <select value={allData.marque} onChange={(e) => handleChange(e.target.value,'marque')}>
                         {marques[0] && marques.map((e,i) => {
                             return (<option key={i} value={e.id}>{e.name}</option>)})
                         }
@@ -98,18 +81,18 @@ const Selection=({updateForm})=>{
                 </label>
             }
             
-            {selectCategories === "5" && 
+            {allData.categorie === "5" && 
                 <Fragment>
                     <label>
                         type Vinyle
-                        <select value={vinyle} onChange={(e) => handleChange(e.target.value,'vinyle')}>
+                        <select value={allData.vinyle} onChange={(e) => handleChange(e.target.value,'vinyle')}>
                             <option value="1">33 RPM</option>
                             <option value="2">45 RPM</option>
                         </select>
                     </label>
                     <label>
                         Genre
-                        <select value={genre} onChange={(e) => handleChange(e.target.value,'genre')}>
+                        <select value={allData.genre} onChange={(e) => handleChange(e.target.value,'genre')}>
                             {genres[0] && genres.map((e,i) => { 
                                 return (
                                     <option key={i} value={e.id}>{e.name}</option>)}
@@ -120,10 +103,10 @@ const Selection=({updateForm})=>{
                 </Fragment>
             }
             
-            {showDecennies.includes(selectCategories) && 
+            {showDecennies.includes(allData.categorie) && 
                 <label>
                     Decennies
-                    <select value={decennie} onChange={(e) => handleChange(e.target.value,'decennie')}>
+                    <select value={allData.decennie} onChange={(e) => handleChange(e.target.value,'decennie')}>
                         {decennies[0] && decennies.map((e,i) => {
                             return(<option key={i} value={e.id}>{e.date}</option>)})
                         }

@@ -26,7 +26,7 @@ const articleDetails = (req, res) => {
                 
                  })    
         
-         console.log(url)
+         
          })
         
      })

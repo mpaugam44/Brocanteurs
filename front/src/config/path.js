@@ -7,7 +7,7 @@ import Logout from "../components/logout";
 import AddArticle from "../components/addarticle";
 import ShowArticle from "../components/articles"
 import ArticleDetails from "../components/articledetails"
-
+import ModifyArt from "../components/articlesmodify"
 
 export const routes = [
     { path:'/', element:<Home /> },
@@ -19,6 +19,9 @@ export const routes = [
     { path :'/addArticle', element:<AddArticle/> },
     { path :'/articles', element:<ShowArticle/> },
     { path :'/articledetails/:id', element:<ArticleDetails/> },
+    { path :'/modifyArticle/:id', element:<ModifyArt/> },
+    
+    
    
 ]
 

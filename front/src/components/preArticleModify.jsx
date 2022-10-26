@@ -1,19 +1,14 @@
-import {useEffect, useState, Fragment, useContext} from "react"
+import {useEffect, useState, Fragment} from "react"
 import BASE_URL from "../config.js"
-import AddComs from "./addcom"
 import axios from 'axios'
 import {useLocation} from 'react-router-dom'
-import AllComs from './coms'
-import {ReducerContext} from "./reducer/reducer"
-import { NavLink } from "react-router-dom";
 
-const ArticleDetails = () =>{
-    const [state, dispatch] = useContext(ReducerContext)
+const PreModify = (props) =>{
     
-    const [articleId, setArticleId] =useState(null)
+    /*const [articleId, setArticleId] =useState(null)
     const [article, setArticle] = useState ({})
-    const [ picture, setPicture] = useState ("")
-    const [commentaire, setCommentaire] = useState ([])
+    const [ picture, setPicture] = useState ("")*/
+   
     // pour appeller notre url
     
     // on appelle les infos venant de notre requête sql 
@@ -23,11 +18,11 @@ const ArticleDetails = () =>{
     // on appelle notre fonction getParams pour aller choper l'id de l'article au rafraichissment de la page
     
     useEffect(() => {
-        if(articleId) {
+        if(props.articleId) {
             getInfos()
-            // console.log(articleId)
+            
         }  
-    }, [articleId]) 
+    }, [props.articleId]) 
 
     const path = useLocation();
 
@@ -37,23 +32,22 @@ const ArticleDetails = () =>{
         // split des éléments de l'url pour les mettre dans un tableau
         const id = pathTable[pathTable.length-1];
         // dernier élément du tableau grâce à length-1
-        setArticleId(id);
+        props.updateArticleId(id);
         // capacité grâce à setArticleId d'aller modifier l'id
         
     }
     
     
     const getInfos = () => {
-        // console.log(articleId)
-        axios.get(`${BASE_URL}/articledetails/${articleId}`)
+        
+        axios.get(`${BASE_URL}/articledetails/${props.articleId}`)
         
         // ce get ne sert qu'à aller chercher notre articleId et ce qu'il contient
         .then((res) => {
             if(res.data.response){
-                // console.log(res.data)
-                setArticle(res.data.article[0])
-                setPicture(res.data.url[0].url)
-                setCommentaire(res.data.commentaire)
+                props.updateArticle(res.data.article[0])
+                props.updatePicture(res.data.url[0].url)
+               
                 //on fait le .url[0].url pour aller chercher le premier url
                 
                 
@@ -78,38 +72,26 @@ const ArticleDetails = () =>{
     
      return (
     <Fragment>
-  console.log(state)
+    
             <div  style={{border:'orange 1px solid'}} >
-               <div>titre:{article.title}</div>
-                <div>photo:{article.pictures}
-                { picture && <img src={`http://martinpaugam.sites.3wa.io:9300/img/${picture}`} />}
+               <div>titre:{props.article.title}</div>
+                <div>photo:{props.article.pictures}
+                {props.picture && <img src={`http://martinpaugam.sites.3wa.io:9300/img/${props.picture}`} />}
                 </div>
-                <div>date:{article.date}</div>
-                <div>description:{article.description}</div>
-                <div>categories:{article.categorie_id}</div>
-                <div>marque:{article.id_marque}</div>
-                <div>vinyle:{article.id_vinyle}</div>
-                <div>price:{article.price}</div>
-                <div>decennies:{article.decennies}</div>
+                <div>date:{props.article.date}</div>
+                <div>description:{props.article.description}</div>
+                <div>categories:{props.article.categories}</div>
+                <div>marque:{props.article.marque}</div>
+                <div>vinyle:{props.article.vinyle}</div>
+                <div>price:{props.article.price}</div>
+                <div>decennies:{props.article.decennies}</div>
             </div>
-            {state.login &&
-            <Fragment>
-                <AddComs />
-                <AllComs commentaire={commentaire} />
-                <NavLink to = {`/modifyArticle/${article.id}`}>
-            Modifier article
-            </NavLink>
-            </Fragment>
             
-            }
     </Fragment>
     )
     
     
 }
 
-export  default ArticleDetails
 
-
-
-   
+export default PreModify;

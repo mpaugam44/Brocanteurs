@@ -4,7 +4,7 @@ import {inputsLength} from '../components/inputLength/index.js'
 
 
 const register = (req,res) => {
-    
+    console.log(req.body)
     const saltRounds = 10;
     let emailIsPresentSQL = "SELECT email FROM users WHERE email = ?"
     let AddUserSQL= "INSERT INTO users (email, password, role_id) VALUES (?, ?, 2)"
@@ -13,7 +13,7 @@ const register = (req,res) => {
        // on exprime la condition de la longueur des inputs via notre fonction qui provient
        // de notre inputLength/index.js
        // on a pas besoin de préciser la value pour req.body.email et req.body.password car elle st déjà expriméé dans la fonction
-        pool.query(emailIsPresentSQL, [req.body.mail], (error, user, fields) => {
+        pool.query(emailIsPresentSQL, [req.body.email], (error, user, fields) => {
             if (error) throw error;
             
             if(user[0]) {
@@ -22,7 +22,7 @@ const register = (req,res) => {
                 bcrypt.hash(req.body.password, saltRounds, function(err, hash){
                     if(err) throw err;
                     
-                    pool.query(AddUserSQL, [req.body.mail, hash], (error, register, fields) => {
+                    pool.query(AddUserSQL, [req.body.email, hash], (error, register, fields) => {
                         res.json({response:true});
                     });
                 });

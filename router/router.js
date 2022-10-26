@@ -8,6 +8,7 @@ import {showComs} from "../controllers/coms.js";
 import {addArticle} from "../controllers/addarticle.js";
 import SelectSubCategories from "../controllers/selectXcategories.js"
 import {showArticle} from "../controllers/articles.js"
+import {modifyArticle} from "../controllers/articlemodify.js"
 
 const router = express.Router();
 
@@ -23,11 +24,14 @@ router.get("/api/selectXcategories", SelectSubCategories);
 
 router.get("/api/articles", showArticle); 
 
-
 router.post("/api/addComs/:id", AddComs);
+
 router.post("/api/isLogged", isLogged);
 
 router.get("/api/showComs/", showComs);
+
+router.post ("/api/modifyArticle/:id",modifyArticle);
+ 
 
 
 

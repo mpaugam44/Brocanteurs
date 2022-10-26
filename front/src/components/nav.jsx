@@ -66,14 +66,10 @@ const Nav = (props) => {
           </li>
           <li>
             <NavLink to="/articles">
-              Articles
+              ARTICLES
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/articledetails">
-              Article Details
-            </NavLink>
-          </li>
+         
           
           
         </Fragment>
@@ -85,26 +81,17 @@ const Nav = (props) => {
                 PROFIL
               </NavLink>
             </li>
-            <li>
-            <NavLink to="/selectXcategories">
-              SELECTION
-            </NavLink>
-          </li>
           <li>
             <NavLink to="/addArticle">
-              Addarticle
+              ADDARTICLE
             </NavLink>
           </li>
            <li>
             <NavLink to="/articles">
-              Articles
+              ARTICLES
             </NavLink>
           </li>
-           <li>
-            <NavLink to="/articledetails">
-              Article Details
-            </NavLink>
-          </li>
+           
           <li>
               <NavLink to="/logout">
                 LOGOUT

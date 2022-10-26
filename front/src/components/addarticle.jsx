@@ -20,10 +20,10 @@ const Addarticle = () => {
     
     const submit = (e) => {
         e.preventDefault()
-        const files = {...e.target.avatar.files}
+        const files = {...e.target.picture.files}
         // trouver le moyen de dégager avatar 
         const dataFile = new FormData();
-        dataFile.append('files', files[0], files[0].name)
+        dataFile.append('files', files[0])
         dataFile.append('titre', titre)
         dataFile.append('description', description)
         categories.categorie && dataFile.append('categories', categories.categorie)
@@ -55,7 +55,7 @@ const Addarticle = () => {
    
     return (
         <form onSubmit={submit} encType="multipart/form-data">
-            {console.log(state)}
+            {/*console.log(state)*/}
             <label>
                 Titre
                 <input type='text' value={titre} onChange={(e) => setTitre(e.target.value)} />
@@ -70,7 +70,7 @@ const Addarticle = () => {
             </label>
             <label>
                 Photo
-                <input type='file' name='avatar'/>
+                <input type='file' name='picture'/>
             </label>
             <Selection updateForm={updateCat} />
             
