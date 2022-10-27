@@ -8,11 +8,11 @@ const Selection=({updateForm, value})=>{
     const showDecennies=["2","3","4","5"]
     
     const [allData, setAllData] = useState({
-            categorie:"2",
-            marque:"2",
-            genre:"2",
-            decennie:"2",
-            vinyle:"33",
+            categorie:"",
+            marque:"",
+            genre:"",
+            decennie:"",
+            vinyle:"",
         });
     
     const [categories, setCategories] = useState([]);
@@ -23,7 +23,6 @@ const Selection=({updateForm, value})=>{
     
     useEffect(() => {
         if(value){
-            console.log('ici')
             setAllData(value)
         }
     },[])
@@ -58,7 +57,6 @@ const Selection=({updateForm, value})=>{
     return (
         
         <div>
-        {console.log(allData)}
             <h3>Choisissez votre catégorie</h3>
             <label>
                 Categorie:

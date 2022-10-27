@@ -8,7 +8,7 @@ import AddArticle from "../components/addarticle";
 import ShowArticle from "../components/articles"
 import ArticleDetails from "../components/articledetails"
 import ModifyArt from "../components/articlesmodify"
-
+import DeleteArt from "../components/deletearticle"
 export const routes = [
     { path:'/', element:<Home /> },
     { path:'/register', element:<Register/> },
@@ -20,6 +20,7 @@ export const routes = [
     { path :'/articles', element:<ShowArticle/> },
     { path :'/articledetails/:id', element:<ArticleDetails/> },
     { path :'/modifyArticle/:id', element:<ModifyArt/> },
+    { path :'/DeleteArticle/:id', element:<DeleteArt/> },
     
     
    

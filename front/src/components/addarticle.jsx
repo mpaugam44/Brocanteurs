@@ -55,7 +55,7 @@ const Addarticle = () => {
    
     return (
         <form onSubmit={submit} encType="multipart/form-data">
-            {/*console.log(state)*/}
+            
             <label>
                 Titre
                 <input type='text' value={titre} onChange={(e) => setTitre(e.target.value)} />

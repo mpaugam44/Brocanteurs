@@ -72,7 +72,6 @@ const PreModify = (props) =>{
     
      return (
     <Fragment>
-    
             <div  style={{border:'orange 1px solid'}} >
                <div>titre:{props.article.title}</div>
                 <div>photo:{props.article.pictures}
@@ -84,7 +83,7 @@ const PreModify = (props) =>{
                 <div>marque:{props.article.marque}</div>
                 <div>vinyle:{props.article.vinyle}</div>
                 <div>price:{props.article.price}</div>
-                <div>decennies:{props.article.decennies}</div>
+               
             </div>
             
     </Fragment>

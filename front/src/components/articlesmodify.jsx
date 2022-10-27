@@ -8,7 +8,9 @@ import PreModify from "./preArticleModify.jsx"
 import BASE_URL from "../config.js"
 import axios from 'axios'
 import Selection from './selectXcategories.jsx'
+import DeleteArt from './deletearticle.jsx'
 import {ReducerContext} from "./reducer/reducer"
+
 
 
 
@@ -44,16 +46,17 @@ const ModifyArt = () => {
     }
     
     const updateArticle = (data) => {
+        console.log(data)
         const newData = {
             title:data.title,
             description:data.description,
             price:data.price,
-            decennies :data.decennie_ID,
+            decennies: data.decennie_ID ? data.decennie_ID.toString() : "",
             vinyle : data.id_vinyle,
             marque : data.id_marque,
             categories : data.categorie_id,
             date : data.date,
-            genre: data.genre_ID,
+            genre: data.genre_ID ? data.genre_ID.toString() : "",
         }
         const dataForSelect = {
             categorie:data.categorie_id ? data.categorie_id.toString() : "",
@@ -63,7 +66,6 @@ const ModifyArt = () => {
             vinyle:data.id_vinyle ? data.id_vinyle.toString() : "",
         }
         setSelect(dataForSelect)
-        console.log(newData)
         setArticle(newData)
         
     }
@@ -73,7 +75,6 @@ const ModifyArt = () => {
     }
         const modifySubmit = (e) => {
             e.preventDefault()
-            console.log(e.target.picture.files)
         const files = {...e.target.picture.files}
         
         const dataFile = new FormData();
@@ -102,9 +103,13 @@ const ModifyArt = () => {
         
     }
     
+    useEffect (()=>{
+        console.log(picture)
+    })
+    
     return (
         <Fragment>
-            <PreModify articleId = {articleId} article={article} picture={picture} updateArticleId={updateArticleId}  updateArticle={updateArticle} updatePicture={updatePicture} />
+            <PreModify articleId ={articleId} article={article} picture={picture} updateArticleId={updateArticleId}  updateArticle={updateArticle} updatePicture={updatePicture} />
             
         <form onSubmit={modifySubmit} encType="multipart/form-data">
             {console.log(state)}
@@ -124,12 +129,12 @@ const ModifyArt = () => {
                 Photo
                 <input type='file' name='picture'/>
             </label>
-            {console.log(select)}
+            
             { select.categorie && <Selection updateForm={updateCat} value={select}/> }
             
             <input type='submit' value='Ajouter vos modifications' />
         </form>
-                               
+               <DeleteArt articleId ={articleId} picture={picture}/>                
     
         </Fragment>
         

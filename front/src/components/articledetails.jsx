@@ -78,7 +78,7 @@ const ArticleDetails = () =>{
     
      return (
     <Fragment>
-  console.log(state)
+  
             <div  style={{border:'orange 1px solid'}} >
                <div>titre:{article.title}</div>
                 <div>photo:{article.pictures}
@@ -89,8 +89,9 @@ const ArticleDetails = () =>{
                 <div>categories:{article.categorie_id}</div>
                 <div>marque:{article.id_marque}</div>
                 <div>vinyle:{article.id_vinyle}</div>
+                <div>genre:{article.genre_ID}</div>
                 <div>price:{article.price}</div>
-                <div>decennies:{article.decennies}</div>
+                <div>decennies:{article.decennies_ID}</div>
             </div>
             {state.login &&
             <Fragment>

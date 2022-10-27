@@ -9,6 +9,7 @@ import {addArticle} from "../controllers/addarticle.js";
 import SelectSubCategories from "../controllers/selectXcategories.js"
 import {showArticle} from "../controllers/articles.js"
 import {modifyArticle} from "../controllers/articlemodify.js"
+import {DeleteArticle} from "../controllers/delete.js"
 
 const router = express.Router();
 
@@ -31,6 +32,8 @@ router.post("/api/isLogged", isLogged);
 router.get("/api/showComs/", showComs);
 
 router.post ("/api/modifyArticle/:id",modifyArticle);
+
+router.post("/api/DeleteArticle/:id",DeleteArticle)
  
 
 

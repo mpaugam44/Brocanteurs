@@ -6,7 +6,7 @@ const USER = 'user'
 
 const protectedPath = (pathname) => {
     const adminPath = ['adminPath'];
-    const userPath = ['userPath','addComs','showComs'] ;
+    const userPath = ['userPath','addComs','showComs','modifyArticle'] ;
     // on met dans ce tableau tout ce qu'on peut admettre ver une route admin ou user. on ne met que /addcoms/
     const protectedAdmin = adminPath.includes(pathname)
     const protectedUser = userPath.includes(pathname)
