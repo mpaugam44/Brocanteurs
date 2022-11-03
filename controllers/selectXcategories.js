@@ -1,5 +1,4 @@
 import fs from 'fs'
-//import formidable from 'formidable'
 import {pool} from '../config/database.js'
 
 const host = "http://martinpaugam.sites.3wa.io:9001/";
@@ -7,7 +6,7 @@ const port = 9300;
 const BASE_URL = `${host}:${port}`;
 
 
-const  SelectXCategories = ( req, res) => {
+const  selectSubCategories = ( req, res) => {
     
     let sqlCategorie = 'SELECT categories.name, categories.id FROM categories'
     let sqlGenre = 'SELECT * FROM genres'
@@ -32,7 +31,4 @@ const  SelectXCategories = ( req, res) => {
 }
 
 
-
-
-
-export default SelectXCategories ;
+export default selectSubCategories ;

@@ -5,10 +5,6 @@ const host = "http://martinpaugam.sites.3wa.io:9001/";
 const port = 9300;
 const BASE_URL = `${host}:${port}`;
 
-
-
-
-
 //Dans la route de type post qui traitera de la soumission du formulaire, on appelle le composant formidable comme ceci
 const showForm = (req, res) => {
     
@@ -68,20 +64,7 @@ const addArticle = (req, res) => {
                 }
             })
         })
-    
-    
-    
-    
-    
-     
-        
-    
-        
     })
-    
-    
-    
-    
 }
 
 

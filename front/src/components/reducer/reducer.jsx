@@ -1,10 +1,12 @@
 import React from "react"
-import {LOGIN, LOGOUT, ADMIN} from '../../config/constante.js'
+import {LOGIN, LOGOUT, ADMIN, THEME} from '../../config/constante.js'
 
 export const initialState = {
     login: false,
     admin:false,
-    userid:null
+    userid:null,
+    background: 'home' 
+    
 }
 
 export const reducer = (state, action) => {
@@ -15,7 +17,13 @@ export const reducer = (state, action) => {
             return {...state, admin:true}
         case LOGOUT :
             return {...state, login:false,  admin:false, userid:null}
+        case THEME :
+            return {...state, background: action.payload}     
         default: return state 
+        
+        
+        
+        
     }
 }
 

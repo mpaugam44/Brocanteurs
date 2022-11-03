@@ -5,13 +5,6 @@ import {useLocation} from 'react-router-dom'
 
 const PreModify = (props) =>{
     
-    /*const [articleId, setArticleId] =useState(null)
-    const [article, setArticle] = useState ({})
-    const [ picture, setPicture] = useState ("")*/
-   
-    // pour appeller notre url
-    
-    // on appelle les infos venant de notre requête sql 
     useEffect(() => {
         getParams()
     } ,[])
@@ -45,12 +38,11 @@ const PreModify = (props) =>{
         // ce get ne sert qu'à aller chercher notre articleId et ce qu'il contient
         .then((res) => {
             if(res.data.response){
+            
                 props.updateArticle(res.data.article[0])
                 props.updatePicture(res.data.url[0].url)
                
                 //on fait le .url[0].url pour aller chercher le premier url
-                
-                
                 // on va chercher le setArticle car le setArticleId est déjà chargé par la fonction getParams
                 
             } else {
@@ -67,7 +59,6 @@ const PreModify = (props) =>{
     } 
     // à chaque ouverture de page on aura un rafraichissement auto de l'article
     
-
     // Une fois qu'on a notre id on appelle notre requête sql via getInfos pour pouvoir chercher les details de l'article correspondant à l'id
     
      return (
@@ -83,7 +74,9 @@ const PreModify = (props) =>{
                 <div>marque:{props.article.marque}</div>
                 <div>vinyle:{props.article.vinyle}</div>
                 <div>price:{props.article.price}</div>
-               
+                <div>genre:{props.article.genre}</div>
+                <div>decennie:{props.article.decennies}</div>
+             
             </div>
             
     </Fragment>
@@ -91,6 +84,5 @@ const PreModify = (props) =>{
     
     
 }
-
 
 export default PreModify;

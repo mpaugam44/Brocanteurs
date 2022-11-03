@@ -59,6 +59,7 @@ const modifyArticle = (req, res) => {
                             if (newFilename && oldUrl[0].url){
                                 fs.unlink(oldUrlPath, (err) => {
                                     if (err) throw err;
+                                    console.log(oldUrl[0].url)
                                     res.json ({response:true})
                                 })
                             } 

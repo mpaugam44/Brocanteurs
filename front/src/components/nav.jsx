@@ -1,26 +1,11 @@
-
-/*import { NavLink } from "react-router-dom";
-import { ReducerContext } from "./reducer/reducer.jsx";
-import {useContext, Fragment} from "react"
-const Nav = (props) => {
- const [state, dispatch] = useContext(ReducerContext)
- 
-  const checkIsactive = ({ isActive }) => {
-    return {
-      display: "block",
-      margin: "1rem 0",
-      color: isActive ? "orange" : "",
-      
-      
-    };
-  };*/
-  
 import { NavLink } from "react-router-dom";
 import {useContext, Fragment, useEffect} from "react"
 import { ReducerContext } from "./reducer/reducer";
+import Navcategorie from "./navcategories"
 import BASE_URL from '../config/Api';
 import {LOGIN,ADMIN} from '../config/constante.js';
 import axios from 'axios';
+import styles  from "../App.css"
 
 
 const Nav = (props) => {
@@ -51,6 +36,7 @@ const Nav = (props) => {
           <NavLink to="/">
             HOME
           </NavLink>
+          
         </li>
         {!state.login &&
         <Fragment>
@@ -68,6 +54,9 @@ const Nav = (props) => {
             <NavLink to="/articles">
               ARTICLES
             </NavLink>
+          </li>
+           <li>
+          <Navcategorie/>
           </li>
          
           

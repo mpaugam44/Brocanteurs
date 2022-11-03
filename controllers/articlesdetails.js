@@ -1,35 +1,29 @@
 import fs from 'fs'
 import {pool} from '../config/database.js'
 
-
 const host = "http://http://martinpaugam.sites.3wa.io:9001/"
 const port = 9300
 const BASE_URL = `${host}:${port}`
 
-
-
 const articleDetails = (req, res) => {
-     const {id} = req.params; 
-     let thisArticle = ' SELECT * FROM articles WHERE id = ?'
-     let getUrl = 'SELECT url FROM pictures WHERE article_id = ? '
-     let getComs = 'SELECT * FROM commentaire WHERE article_id = ?  '
-     pool.query(thisArticle, [id],  ( err, article, fields) => {
+    const {id} = req.params; 
+    let thisArticle = ' SELECT * FROM articles WHERE id = ?'
+    let getUrl = 'SELECT url FROM pictures WHERE article_id = ? '
+    let getComs = 'SELECT * FROM commentaire WHERE article_id = ?  '
+    pool.query(thisArticle, [id],  ( err, article, fields) => {
          //on doit spécifier ce qu'on va chercher dans notre pool.query
-         if(err) throw err 
-         pool.query(getUrl, [id],(err,url,fields)=> {
+        if(err) throw err 
+        pool.query(getUrl, [id],(err,url,fields)=> {
          // requête pour aller chercher l'url  de pictures dans notre bdd
              if(err) throw err
-                 pool.query(getComs, [id],(err,commentaire,fields)=> {
-                     if(err) throw err
+                pool.query(getComs, [id],(err,commentaire,fields)=> {
+                    if(err) throw err
+                    res.json({response:true,article,url,commentaire})
                 
-                 res.json({response:true,article,url,commentaire})
-                
-                 })    
+                })    
+        })
         
-         
-         })
-        
-     })
+    })
     
 }   
 

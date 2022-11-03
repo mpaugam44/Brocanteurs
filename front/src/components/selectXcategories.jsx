@@ -8,10 +8,10 @@ const Selection=({updateForm, value})=>{
     const showDecennies=["2","3","4","5"]
     
     const [allData, setAllData] = useState({
-            categorie:"",
-            marque:"",
+            categorie:"2",
+            marque:"1",
             genre:"",
-            decennie:"",
+            decennie:"1",
             vinyle:"",
         });
     
@@ -50,17 +50,27 @@ const Selection=({updateForm, value})=>{
             ...allData
         }
         data[type] = value
+        if(type === 'categorie' && value !== '5'){
+            // setAllData({...allData, vinyle: '', genre:''})
+            data['vinyle'] = ''
+            data['genre'] = ''
+        } else if (type === 'categorie' && value ==='5'){
+            data['vinyle'] = '1'
+            data['genre'] = '1'
+        }
+
         setAllData(data)
         updateForm(data)
     }
-        
+    
+    
     return (
         
         <div>
             <h3>Choisissez votre catégorie</h3>
             <label>
                 Categorie:
-                <select value={allData.categorie}  onChange={(e) => handleChange(e.target.value,'categorie')}>
+                <select value={allData.categorie} required onChange={(e) => handleChange(e.target.value,'categorie')}>
                     {categories[0] && categories.map((e,i) => 
                         <option key={i} value={e.id}>{e.name}</option>
                     )}
@@ -71,7 +81,7 @@ const Selection=({updateForm, value})=>{
             {showMarque.includes(allData.categorie) && 
                 <label>
                     Marque
-                    <select value={allData.marque} onChange={(e) => handleChange(e.target.value,'marque')}>
+                    <select value={allData.marque} required onChange={(e) => handleChange(e.target.value,'marque')}>
                         {marques[0] && marques.map((e,i) => {
                             return (<option key={i} value={e.id}>{e.name}</option>)})
                         }
@@ -83,14 +93,14 @@ const Selection=({updateForm, value})=>{
                 <Fragment>
                     <label>
                         type Vinyle
-                        <select value={allData.vinyle} onChange={(e) => handleChange(e.target.value,'vinyle')}>
+                        <select value={allData.vinyle} required onChange={(e) => handleChange(e.target.value,'vinyle')}>
                             <option value="1">33 RPM</option>
                             <option value="2">45 RPM</option>
                         </select>
                     </label>
                     <label>
                         Genre
-                        <select value={allData.genre} onChange={(e) => handleChange(e.target.value,'genre')}>
+                        <select value={allData.genre} required onChange={(e) => handleChange(e.target.value,'genre')}>
                             {genres[0] && genres.map((e,i) => { 
                                 return (
                                     <option key={i} value={e.id}>{e.name}</option>)}
@@ -104,7 +114,7 @@ const Selection=({updateForm, value})=>{
             {showDecennies.includes(allData.categorie) && 
                 <label>
                     Decennies
-                    <select value={allData.decennie} onChange={(e) => handleChange(e.target.value,'decennie')}>
+                    <select value={allData.decennie} required onChange={(e) => handleChange(e.target.value,'decennie')}>
                         {decennies[0] && decennies.map((e,i) => {
                             return(<option key={i} value={e.id}>{e.date}</option>)})
                         }

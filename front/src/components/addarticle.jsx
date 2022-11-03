@@ -1,7 +1,8 @@
-import {useState, useContext} from 'react'
+import {useState, useContext, useEffect} from 'react'
 import BASE_URL from "../config.js"
 import axios from 'axios'
 import Selection from './selectXcategories.jsx'
+import {useNavigate} from "react-router-dom";
 import {ReducerContext} from "./reducer/reducer"
 
 const Addarticle = () => {
@@ -12,7 +13,7 @@ const Addarticle = () => {
     const [description, setDescription] = useState("")
     const [prix, setPrix] = useState(0)
     const [categories, setCategories] = useState({})
-    
+     const navigate = useNavigate();
     
     const updateCat = (data) => {
         setCategories(data)
@@ -21,15 +22,16 @@ const Addarticle = () => {
     const submit = (e) => {
         e.preventDefault()
         const files = {...e.target.picture.files}
-        // trouver le moyen de dégager avatar 
+        
         const dataFile = new FormData();
+        
         dataFile.append('files', files[0])
         dataFile.append('titre', titre)
         dataFile.append('description', description)
         categories.categorie && dataFile.append('categories', categories.categorie)
         categories.marque && dataFile.append('marque', categories.marque)
-        categories.genre && dataFile.append('genre', categories.genre)
-        categories.decennie && dataFile.append('decennie', categories.decennie)
+        categories.genre && dataFile.append('genre_ID', categories.genre)
+        categories.decennie && dataFile.append('decennie_ID', categories.decennie)
         categories.vinyle && dataFile.append('vinyle', categories.vinyle)
         dataFile.append('userid', state.userid)
         dataFile.append('prix', prix)
@@ -37,6 +39,7 @@ const Addarticle = () => {
         axios.post(`${BASE_URL}/addArticle`,dataFile)
         .then((res) => {
             if(res.data.response){
+                navigate("/articles")
                 // success
             } else {
                 // echec
@@ -52,25 +55,28 @@ const Addarticle = () => {
         
     }
     
+    useEffect(()=> {
+        console.log(categories)
+    })
    
     return (
         <form onSubmit={submit} encType="multipart/form-data">
             
             <label>
                 Titre
-                <input type='text' value={titre} onChange={(e) => setTitre(e.target.value)} />
+                <input type='text' value={titre} onChange={(e) => setTitre(e.target.value)} required/>
             </label>
             <label>
                 Description
-                <input type='text' value={description} onChange={(e) => setDescription(e.target.value)} />
+                <input type='text' value={description} onChange={(e) => setDescription(e.target.value)} required />
             </label>
             <label>
                 Prix
-                <input type='number' value={prix} onChange={(e) => setPrix(e.target.value)} />
+                <input type='number' value={prix} onChange={(e) => setPrix(e.target.value)} required />
             </label>
             <label>
                 Photo
-                <input type='file' name='picture'/>
+                <input type='file' name='picture' required/>
             </label>
             <Selection updateForm={updateCat} />
             

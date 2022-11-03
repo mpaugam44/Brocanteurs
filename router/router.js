@@ -6,10 +6,11 @@ import {isLogged} from "../controllers/isLogged.js";
 import {articleDetails, AddComs} from "../controllers/articlesdetails.js";
 import {showComs} from "../controllers/coms.js";
 import {addArticle} from "../controllers/addarticle.js";
-import SelectSubCategories from "../controllers/selectXcategories.js"
+import selectSubCategories from "../controllers/selectXcategories.js"
 import {showArticle} from "../controllers/articles.js"
 import {modifyArticle} from "../controllers/articlemodify.js"
-import {DeleteArticle} from "../controllers/delete.js"
+import {deleteArticle} from "../controllers/delete.js"
+import {allCatArticles} from "../controllers/categorie.js"
 
 const router = express.Router();
 
@@ -21,7 +22,7 @@ router.get("/api/articledetails/:id", articleDetails);
 
 router.post("/api/addArticle", addArticle);
 
-router.get("/api/selectXcategories", SelectSubCategories); 
+router.get("/api/selectXcategories", selectSubCategories); 
 
 router.get("/api/articles", showArticle); 
 
@@ -33,7 +34,9 @@ router.get("/api/showComs/", showComs);
 
 router.post ("/api/modifyArticle/:id",modifyArticle);
 
-router.post("/api/DeleteArticle/:id",DeleteArticle)
+router.post("/api/DeleteArticle/:id",deleteArticle)
+
+router.get ("/api/categorie/:id",allCatArticles) 
  
 
 

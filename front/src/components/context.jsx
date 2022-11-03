@@ -9,8 +9,6 @@ const Provider = ({children}) => {
             {children}
         </ReducerContext.Provider>
     )
-    
-    
 }
 
 export default Provider

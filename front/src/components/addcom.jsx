@@ -3,11 +3,13 @@ import BASE_URL from "../config.js"
 import axios from 'axios'
 import {ReducerContext} from "./reducer/reducer"
 import {useParams} from 'react-router-dom'
+import {useNavigate} from "react-router-dom";
+
 const AddComs = () => {
     const params = useParams()
     
     const [state, dispatch] = useContext(ReducerContext)
-    
+    const navigate = useNavigate();
     const [description, setDescription] = useState("")
     const [name, setName] = useState("")
     const [email, setEmail] = useState ("")
@@ -21,6 +23,7 @@ const AddComs = () => {
         axios.post(`${BASE_URL}/addComs/${params.id}`,{name,description,email,userid:state.userid})
         .then((res) => {
             if(res.data.response){
+               navigate("/articles")
                 // success
             } else {
                 // echec
@@ -30,16 +33,9 @@ const AddComs = () => {
             console.log(err)
         })
         .then(() => {
-            // setDescription("")
-            // setName("")
-            // setEmail("")
-           
-            
+        
         })
     }    
-    
-    
-    
     
     return(
     <form onSubmit={submit} encType="multipart/form-data">

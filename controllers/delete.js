@@ -1,15 +1,3 @@
-//'DELETE FROM articles WHERE id = ? '
-// 'DELETE FROM commentaire WHERE article_id = ?' 
-// 'DELETE  FROM pictures WHERE article_id ? '
-
-//pool.query [id]
-//pool.query [article_id]
-// pool.query [artilce_id]
-// fs.unlink pour le picture et la suppression de la picture dans notre public/img
-
-
-
-
 import {pool} from '../config/database.js'
 import formidable from 'formidable'
 import fs from 'fs'
@@ -20,7 +8,7 @@ const port = 9300;
 const BASE_URL = `${host}:${port}`;
 
 
-const DeleteArticle = (req, res) => {
+const deleteArticle = (req, res) => {
     const {id} = req.params;
     
   
@@ -55,4 +43,4 @@ const DeleteArticle = (req, res) => {
 }
 
 
-export {DeleteArticle}
+export {deleteArticle}

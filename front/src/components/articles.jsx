@@ -6,9 +6,7 @@ import { NavLink } from "react-router-dom";
 
 const ShowArticles = () => {
     
-    
     const[articles, setArticles] = useState([]);
-    
     
     useEffect(() => {
         axios.get(`${BASE_URL}/articles`)
@@ -53,8 +51,5 @@ const ShowArticles = () => {
     
     
 }
-
-
-
 
 export default ShowArticles ;

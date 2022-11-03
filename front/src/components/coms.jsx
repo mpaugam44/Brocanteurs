@@ -1,20 +1,22 @@
-import {useState,useEffect, Fragment} from 'react'
+import {useState,useEffect, Fragment,useContext} from 'react'
 import BASE_URL from "../config.js"
 import axios from 'axios'
 import { LOGIN, ADMIN } from "../config/constante.js"
+import {ReducerContext} from "./reducer/reducer" 
 
-
-
-
-const AllComs = ({commentaire}) => {
+const AllComs = ({commentaire, user_id}) => {
     
     const[coms, setComs] = useState(commentaire);
+    const [state, dispatch] = useContext(ReducerContext)
     
-     useEffect(() => {
+    useEffect(() => {
          setComs(commentaire)
-     },[commentaire])
+    },[commentaire])
+     
+/*    const verifId = () => {
+       SetUserId(!userId) 
+    } */
   
-    
     return (
         <Fragment>
             {coms[0] && coms.map((e,i) => 
@@ -24,13 +26,14 @@ const AllComs = ({commentaire}) => {
                     <div>name:{e.name}</div>
                     <div>description:{e.description}</div>
                     <div>date:{e.date}</div>
+                {state.userid === user_id &&
                     <div>email:{e.email}</div>
+                }
                 </div>
             )}
         </Fragment>
 
     )
 }
-
 
 export default AllComs;

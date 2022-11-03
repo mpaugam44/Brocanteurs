@@ -9,7 +9,9 @@ import ShowArticle from "../components/articles"
 import ArticleDetails from "../components/articledetails"
 import ModifyArt from "../components/articlesmodify"
 import DeleteArt from "../components/deletearticle"
+import GetCategorie from "../components/categorie"
 export const routes = [
+   
     { path:'/', element:<Home /> },
     { path:'/register', element:<Register/> },
     { path:'/login', element:<Login /> },
@@ -21,9 +23,9 @@ export const routes = [
     { path :'/articledetails/:id', element:<ArticleDetails/> },
     { path :'/modifyArticle/:id', element:<ModifyArt/> },
     { path :'/DeleteArticle/:id', element:<DeleteArt/> },
+    { path :'/categorie/:id', element:<GetCategorie/> }
     
     
-   
 ]
 
 

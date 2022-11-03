@@ -102,10 +102,10 @@ const Login = () => {
             <h2>Formulaire de connexion</h2>
             <form onSubmit={submit}>
                 <label>Mail : </label>
-                <input type="mail" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input type="email" value={email}  required onChange={(e) => setEmail(e.target.value)} />
                 
                 <label>Password : </label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <input type="password" value={password} required  onChange={(e) => setPassword(e.target.value)}/>
                 
                 <input type="submit" value="valider"/>
             </form>

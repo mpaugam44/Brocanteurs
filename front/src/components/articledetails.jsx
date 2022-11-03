@@ -14,9 +14,7 @@ const ArticleDetails = () =>{
     const [article, setArticle] = useState ({})
     const [ picture, setPicture] = useState ("")
     const [commentaire, setCommentaire] = useState ([])
-    // pour appeller notre url
-    
-    // on appelle les infos venant de notre requête sql 
+   
     useEffect(() => {
         getParams()
     } ,[])
@@ -44,9 +42,8 @@ const ArticleDetails = () =>{
     
     
     const getInfos = () => {
-        // console.log(articleId)
-        axios.get(`${BASE_URL}/articledetails/${articleId}`)
         
+        axios.get(`${BASE_URL}/articledetails/${articleId}`)
         // ce get ne sert qu'à aller chercher notre articleId et ce qu'il contient
         .then((res) => {
             if(res.data.response){
@@ -55,7 +52,6 @@ const ArticleDetails = () =>{
                 setPicture(res.data.url[0].url)
                 setCommentaire(res.data.commentaire)
                 //on fait le .url[0].url pour aller chercher le premier url
-                
                 
                 // on va chercher le setArticle car le setArticleId est déjà chargé par la fonction getParams
                 
@@ -73,12 +69,16 @@ const ArticleDetails = () =>{
     } 
     // à chaque ouverture de page on aura un rafraichissement auto de l'article
     
-
     // Une fois qu'on a notre id on appelle notre requête sql via getInfos pour pouvoir chercher les details de l'article correspondant à l'id
+    
+    
+
+
+    
     
      return (
     <Fragment>
-  
+ 
             <div  style={{border:'orange 1px solid'}} >
                <div>titre:{article.title}</div>
                 <div>photo:{article.pictures}
@@ -91,15 +91,18 @@ const ArticleDetails = () =>{
                 <div>vinyle:{article.id_vinyle}</div>
                 <div>genre:{article.genre_ID}</div>
                 <div>price:{article.price}</div>
-                <div>decennies:{article.decennies_ID}</div>
+                <div>decennies:{article.decennie_ID}</div>
             </div>
+            
             {state.login &&
             <Fragment>
                 <AddComs />
-                <AllComs commentaire={commentaire} />
+                <AllComs commentaire={commentaire} user_id={article.user_id} />
+                { (state.userid === article.user_id || state.admin) && 
                 <NavLink to = {`/modifyArticle/${article.id}`}>
-            Modifier article
-            </NavLink>
+                    Modifier/Supprimer article
+                </NavLink>
+                }
             </Fragment>
             
             }

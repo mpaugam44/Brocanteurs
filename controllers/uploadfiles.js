@@ -1,7 +1,6 @@
 import formidable from 'formidable';
 import fs from 'fs';
 
-
 const checkAcceptedExtensions = (file) => {
 	const type = file.mimetype.split('/').pop()
 	const accepted = ['jpeg', 'jpg', 'png', 'gif']

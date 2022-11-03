@@ -12,8 +12,6 @@ const UploadFile = () => {
         const dataFile = new FormData();
         const pictures = {...e.target.photos.files};
         
-      
-        
         // ajouter d'autre input au formulaire
        // dataFile.append('username', username)
         
