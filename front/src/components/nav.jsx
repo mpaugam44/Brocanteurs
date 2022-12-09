@@ -55,9 +55,7 @@ const Nav = (props) => {
               ARTICLES
             </NavLink>
           </li>
-           <li>
-          <Navcategorie/>
-          </li>
+          
          
           
           
@@ -86,6 +84,7 @@ const Nav = (props) => {
                 LOGOUT
               </NavLink>
             </li>
+             <Navcategorie/>
           </Fragment>
         }
         {state.admin && 

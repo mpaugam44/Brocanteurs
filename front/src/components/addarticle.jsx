@@ -12,8 +12,15 @@ const Addarticle = () => {
     const [titre, setTitre] = useState("")
     const [description, setDescription] = useState("")
     const [prix, setPrix] = useState(0)
-    const [categories, setCategories] = useState({})
-     const navigate = useNavigate();
+    const [categories, setCategories] = useState({
+            categorie:"2",
+            marque:"1",
+            genre:"",
+            decennie:"1",
+            vinyle:"",
+    })
+    const [msg, setMsg] = useState("")
+    const navigate = useNavigate();
     
     const updateCat = (data) => {
         setCategories(data)
@@ -24,7 +31,7 @@ const Addarticle = () => {
         const files = {...e.target.picture.files}
         
         const dataFile = new FormData();
-        
+        console.log(categories)
         dataFile.append('files', files[0])
         dataFile.append('titre', titre)
         dataFile.append('description', description)
@@ -36,27 +43,37 @@ const Addarticle = () => {
         dataFile.append('userid', state.userid)
         dataFile.append('prix', prix)
         //on ajoute un par un les fichiers de notre front pour les orienter vers notre bdd via notre back end 
-        axios.post(`${BASE_URL}/addArticle`,dataFile)
-        .then((res) => {
-            if(res.data.response){
-                navigate("/articles")
-                // success
-            } else {
-                // echec
-            }
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-        .then(() => {
-            setDescription("")
-            setTitre("")
-        })
+        
+         
+        if(!files[0]){
+           
+            setMsg("Veuillez fournir une image")
+        }
+            else{
+                
+                axios.post(`${BASE_URL}/addArticle`,dataFile)
+                .then((res) => {
+                    if(res.data.response){
+                        navigate("/articles")
+                        // success
+                    } else {
+                        setMsg(res.data.msg)
+                    }
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+                .then(() => {
+                    setDescription("")
+                    setTitre("")
+                })
+            }    
         
     }
     
     useEffect(()=> {
-        console.log(categories)
+        console.log(msg)
+        
     })
    
     return (
@@ -81,6 +98,10 @@ const Addarticle = () => {
             <Selection updateForm={updateCat} />
             
             <input type='submit' value='Ajouter votre produit' />
+            
+            { msg !== ""  && <p> {msg} </p> }
+            
+            
         </form>
                                
     )

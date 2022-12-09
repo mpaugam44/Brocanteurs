@@ -1,29 +1,36 @@
-import {Fragment} from 'react'
+import {Fragment, useEffect, useContext} from 'react'
 import BASE_URL from "../config.js"
 import { LOGIN, ADMIN } from "../config/constante.js"
 import { NavLink } from "react-router-dom";
 
 
-const Navcategorie = () => {
+
+const NavCategorie = () => {
+    
     
     return(
     <nav>
+    
+   
     <NavLink to ="categorie/2">
         Enceintes
     </NavLink>
-    <NavLink to ="categorie/Ampli/3">
+    <NavLink to ="categorie/3">
         Ampli
     </NavLink>
-    <NavLink to ="categorie/Tournedisque/4">
+    <NavLink to ="categorie/4">
         Tournedisque
     </NavLink>
-    <NavLink to ="categorie/Vinyles/5">
+    <NavLink to ="categorie/5">
         Vinyles
     </NavLink>
+     
     </nav>
+    
+   
     
     )
     
 }
 
-export default Navcategorie;
+export default NavCategorie;

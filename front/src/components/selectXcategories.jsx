@@ -58,7 +58,7 @@ const Selection=({updateForm, value})=>{
             data['vinyle'] = '1'
             data['genre'] = '1'
         }
-
+       
         setAllData(data)
         updateForm(data)
     }
@@ -70,6 +70,7 @@ const Selection=({updateForm, value})=>{
             <h3>Choisissez votre catégorie</h3>
             <label>
                 Categorie:
+                
                 <select value={allData.categorie} required onChange={(e) => handleChange(e.target.value,'categorie')}>
                     {categories[0] && categories.map((e,i) => 
                         <option key={i} value={e.id}>{e.name}</option>

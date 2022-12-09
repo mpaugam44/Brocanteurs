@@ -11,6 +11,7 @@ const ModifyArt = () => {
     
     const [state, dispatch] = useContext(ReducerContext)
     const navigate = useNavigate();
+    const [msg, setMsg] = useState("")
     const [select, setSelect] = useState({})
     const [articleId, setArticleId] =useState(null)
     const [article, setArticle] = useState ({
@@ -82,31 +83,32 @@ const ModifyArt = () => {
             dataFile.append('userid', state.userid)
             dataFile.append('price', article.price)
         //on ajoute un par un les fichiers de notre front pour les orienter vers notre bdd via notre back end 
+            
+            
+            
+        
             axios.post(`${BASE_URL}/modifyArticle/${articleId}`,dataFile)
             .then((res) => {
                 if(res.data.response){
                     navigate(`/articledetails/${articleId}`)
                 // success
                 } else {
-                // echec
+                setMsg(res.data.msg)
                 }
-            })
-            .catch((err) => {
-            console.log(err)
-            })
+                })
+                .catch((err) => {
+                console.log(err)
+                })
+            }
+            
         
-        }
-    
-        useEffect (()=>{
-        
-        })
+            useEffect (()=>{
+            
+            })
     
     return (
         <Fragment>
-        {console.log(article)}
-            
-                
-                
+       
             <PreModify articleId ={articleId} article={article} picture={picture} updateArticleId={updateArticleId}  updateArticle={updateArticle} updatePicture={updatePicture} />
             {state.userid === article.user_id &&
                 <form onSubmit={modifySubmit} encType="multipart/form-data">
@@ -125,12 +127,13 @@ const ModifyArt = () => {
                     </label>
                     <label>
                         Photo
-                        <input type='file' name='picture' required/>
+                        <input type='file' name='picture' />
                     </label>
                     
                     { select.categorie && <Selection updateForm={updateCat} value={select}/> }
                     
                     <input type='submit' value='Ajouter vos modifications' />
+                    { msg !== ""  && <p> {msg} </p> }
                 </form>
                             
             }

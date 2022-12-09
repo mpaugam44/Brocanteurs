@@ -12,9 +12,9 @@ const ShowArticles = () => {
         axios.get(`${BASE_URL}/articles`)
         .then((res) => {
             if(res.data.response){
-               setArticles(res.data.article)
+               setArticles(res.data.articles)
                
-              console.log(res.data.article)
+              console.log(res.data.articles)
             } 
             else {
                 console.log(res.data.message)
@@ -30,7 +30,7 @@ const ShowArticles = () => {
     <Fragment>
        
         {articles[0] && articles.map((e,i) => 
-            <div  style={{border:'red 1px solid'}} key={i}>
+            <div style={{border:'red 1px solid'}} key={i}>
             <NavLink to = {`/articledetails/${e.id}`}>
             Voir details
             </NavLink>

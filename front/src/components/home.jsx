@@ -4,7 +4,6 @@ import { ReducerContext } from "./reducer/reducer";
 
 const Home = () => {
     const [state, dispatch] = React.useContext(ReducerContext)
-    console.log(state)
     
     return (
        
