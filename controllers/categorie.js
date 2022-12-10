@@ -5,10 +5,10 @@ const host = "http://http://martinpaugam.sites.3wa.io:9001/"
 const port = 9300
 const BASE_URL = `${host}:${port}`
 
-const allCatArticles = (req, res) =>{
+const allArticlesFromCat = (req, res) =>{
     const {id} = req.params
 
-    let SelectionCat = 'SELECT * from articles WHERE categorie_id = ? '
+    let SelectionCat = 'SELECT articles.*,pictures.url FROM articles JOIN pictures ON pictures.article_id = articles.id WHERE categorie_id = ? '
     
     pool.query( SelectionCat,[id],( error, articles, fields) => {
         res.json({response:true,
@@ -19,4 +19,4 @@ const allCatArticles = (req, res) =>{
 }
 
 
-export {allCatArticles} ;
+export {allArticlesFromCat} ;

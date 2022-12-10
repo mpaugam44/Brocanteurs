@@ -55,3 +55,71 @@ body {
   background-size:cover;
   background-color: purple;
 }
+
+
+/**********************FONT FACE*************************/
+@font-face {
+  font-family: "Baloo Medium";
+  src: url('../public/fonts/baloo/BalooDa2-Medium.ttf');
+  
+}
+
+@font-face {
+  font-family: "Baloo Regular";
+  src: url('../public/fonts/baloo/BalooDa2-Regular.ttf');
+  
+}
+
+@font-face {
+  font-family: "Baloo Regular";
+  src: url('../public/fonts/baloo/BalooDa2-Regular.ttf');
+  
+}
+
+
+/**********************VARIABLES*************************/
+
+
+
+/**********************GLOBAL**************************/
+
+
+/**********************HEADER*************************/
+
+
+/*NAV*/
+
+
+
+/*NAV LOGIN*/
+
+
+
+/*NAV ADMIN*/
+
+
+/**********************FORM REGISTER/LOGIN*************************/
+
+
+/**********************FORM ADD*************************/
+
+
+/**********************FORM MODIFY/DELETE*************************/
+
+
+/**********************PAGES ARTICLES/ART PAR CATEGORIE*************************/
+
+
+/*********************************************MEDIA QUERIES****************************************/
+
+
+/****************************TABLETTE***********************************/
+
+
+/****************************DECKSTOP***********************************/
+
+
+
+
+
+

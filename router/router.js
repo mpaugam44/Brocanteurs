@@ -10,7 +10,7 @@ import selectSubCategories from "../controllers/selectXcategories.js"
 import {showArticle} from "../controllers/articles.js"
 import {modifyArticle} from "../controllers/articlemodify.js"
 import {deleteArticle} from "../controllers/delete.js"
-import {allCatArticles} from "../controllers/categorie.js"
+import {allArticlesFromCat} from "../controllers/categorie.js"
 
 const router = express.Router();
 
@@ -36,7 +36,7 @@ router.post ("/api/modifyArticle/:id",modifyArticle);
 
 router.post("/api/DeleteArticle/:id",deleteArticle)
 
-router.get ("/api/categorie/:id",allCatArticles) 
+router.get("/api/categorie/:id",allArticlesFromCat) 
  
 
 
