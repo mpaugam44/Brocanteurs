@@ -34,16 +34,13 @@ const ShowArticles = () => {
             <NavLink to = {`/articledetails/${e.id}`}>
             Voir details
             </NavLink>
-                <div>id:{e.id}</div>
-                <div>Titre:{e.title}</div>
+               
+               <div>Titre:{e.title}</div>
                 <div>Photo:
                 <img src={`http://martinpaugam.sites.3wa.io:9300/img/${e.url}`} />
                 </div>
                 <div>date:{e.date}</div>
-                <div>categorie_id:{e.categorie_id}</div>
-                <div>id_marque:{e.id_marque}</div>
-                <div>id_vinyle:{e.id_vinyle}</div>
-                <div>price:{e.price}</div>
+               <div>price:{e.price}</div>
             </div>
         )}
     </Fragment>

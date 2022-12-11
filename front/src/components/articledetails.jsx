@@ -47,7 +47,7 @@ const ArticleDetails = () =>{
         // ce get ne sert qu'à aller chercher notre articleId et ce qu'il contient
         .then((res) => {
             if(res.data.response){
-                // console.log(res.data)
+                 console.log(res.data)
                 setArticle(res.data.article[0])
                 setPicture(res.data.url[0].url)
                 setCommentaire(res.data.commentaire)
@@ -88,7 +88,8 @@ const ArticleDetails = () =>{
                 <div>description:{article.description}</div>
                 <div>categories:{article.categorie_id}</div>
                 <div>marque:{article.id_marque}</div>
-                <div>vinyle:{article.id_vinyle}</div>
+                {article.id_vinyle && 
+                <div>vinyle:{article.id_vinyle ===1 ? "33 RPM" : "45 RPM" } </div> }
                 <div>genre:{article.genre_ID}</div>
                 <div>price:{article.price}</div>
                 <div>decennies:{article.decennie_ID}</div>

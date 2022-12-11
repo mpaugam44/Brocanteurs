@@ -109,7 +109,7 @@ const ModifyArt = () => {
     return (
         <Fragment>
        
-            <PreModify articleId ={articleId} article={article} picture={picture} updateArticleId={updateArticleId}  updateArticle={updateArticle} updatePicture={updatePicture} />
+            
             {state.userid === article.user_id &&
                 <form onSubmit={modifySubmit} encType="multipart/form-data">
         

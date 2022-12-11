@@ -1,8 +1,8 @@
 import {fileTypeFromFile} from 'file-type'
 
-const checkAcceptedExtensions = async (file) => {
+const checkAcceptedExtensions = async (file,acceptedExt) => {
 	
-	const accepted = ['jpeg', 'jpg', 'png', 'gif']
+	
 	//On définit les ext. acceptés 
 	const fileType = await fileTypeFromFile(file.filepath)
 	console.log(fileType)
@@ -16,7 +16,7 @@ const checkAcceptedExtensions = async (file) => {
 	
 	else{
 	
-		if(accepted.includes(fileType.ext)) {
+		if(acceptedExt.includes(fileType.ext)) {
 	    return true
 		}
 		return false

@@ -1,31 +1,84 @@
 import fs from 'fs'
-import {pool} from '../config/database.js'
+import {pool ,asyncQuery } from '../config/database.js'
 
 const host = "http://http://martinpaugam.sites.3wa.io:9001/"
 const port = 9300
 const BASE_URL = `${host}:${port}`
 
-const articleDetails = (req, res) => {
+const articleDetails = async(req, res) => {
     const {id} = req.params; 
-    let thisArticle = ' SELECT * FROM articles WHERE id = ?'
+    
+    let thisArticle = 'SELECT articles.*, DATE_FORMAT(articles.date, "%d/%m/%Y %H:%i") AS date, categories.name AS categories_name, decennie.date AS decennie_date FROM articles JOIN categories ON categorie_id = categories.id JOIN decennie ON decennie_ID = decennie.id WHERE articles.id = ?'
+    
     let getUrl = 'SELECT url FROM pictures WHERE article_id = ? '
     let getComs = 'SELECT * FROM commentaire WHERE article_id = ?  '
-    pool.query(thisArticle, [id],  ( err, article, fields) => {
-         //on doit spécifier ce qu'on va chercher dans notre pool.query
-        if(err) throw err 
-        pool.query(getUrl, [id],(err,url,fields)=> {
-         // requête pour aller chercher l'url  de pictures dans notre bdd
-             if(err) throw err
-                pool.query(getComs, [id],(err,commentaire,fields)=> {
-                    if(err) throw err
-                    res.json({response:true,article,url,commentaire})
-                
-                })    
-        })
-        
-    })
     
-}   
+    const article = await asyncQuery (thisArticle , [id])
+    console.log(article)
+    const url = await asyncQuery ( getUrl , [id])
+    const commentaire = await asyncQuery ( getComs,[id] )
+    const articleVinyle = await getVinyle(article)
+    const articleGenre = await getGenre(articleVinyle)
+    const articleMarque = await getMarque(articleGenre)
+    
+    
+    
+    
+    res.json({response:true,article:articleMarque, commentaire, url})
+        
+                    
+                
+    
+}  
+
+
+const getVinyle = async (data) => {
+    
+    let getVinyleName ='SELECT name  FROM vinyle WHERE id = ? '
+    if(data[0].id_vinyle){
+        const vinyle = await  asyncQuery (getVinyleName ,[data[0].id_vinyle])
+       
+            return [{...data[0], vinyle_name:vinyle[0].name}]
+    
+    }else{
+        return data
+    }
+    
+    
+    
+}
+
+const getGenre= async (data) => {
+    let getGenreName = 'SELECT name  FROM genres WHERE id = ?'
+    if(data[0].genre_ID){
+        const genre = await asyncQuery( getGenreName ,[data[0].genre_ID] )
+       
+            return [{...data[0],genre_name:genre[0].name}]
+    
+    }else{
+        return data
+    }
+    
+    
+    
+}
+
+const getMarque = async (data) => {
+    
+    
+    let getMarqueName  = 'SELECT name FROM marque WHERE id = ?'
+   
+    if(data[0].id_marque){
+            const marque =  await asyncQuery( getMarqueName , [data[0].id_marque] )
+            console.log(marque)   
+            return [{...data[0],marque_name:marque[0].name}]
+             
+    }else{
+        
+        return data
+    }
+    
+}
 
 
 const AddComs = (req, res) => {
