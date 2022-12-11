@@ -1,12 +1,5 @@
-.THEME{
-  text-align:center;
-  background-color:blue;
-}
 
 
-body {
-  background-color:#FFFAF0;
-}
 
 /*.App {
   text-align: center;
@@ -15,7 +8,7 @@ body {
   height :100%;
 }*/
 
-.App-logo {
+/*.App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -54,34 +47,110 @@ body {
 .Container {
   background-size:cover;
   background-color: purple;
-}
+}*/
 
 
 /**********************FONT FACE*************************/
 @font-face {
   font-family: "Baloo Medium";
-  src: url('../public/fonts/baloo/BalooDa2-Medium.ttf');
+  src: url('../../public/fonts/baloo/BalooDa2-Medium.ttf');
   
 }
 
 @font-face {
   font-family: "Baloo Regular";
-  src: url('../public/fonts/baloo/BalooDa2-Regular.ttf');
+  src: url('../../public/fonts/baloo/BalooDa2-Regular.ttf');
+  
+}
+
+
+
+@font-face {
+  font-family: "Avenir Book";
+  src: url('../../public/fonts/avenir/AvenirLTStd-Book.otf');
   
 }
 
 @font-face {
-  font-family: "Baloo Regular";
-  src: url('../public/fonts/baloo/BalooDa2-Regular.ttf');
+  font-family: "Avenir Roman";
+  src: url('../../public/fonts/avenir/AvenirLTStd-Roman.otf');
   
 }
 
 
 /**********************VARIABLES*************************/
 
+:root {
+  --main-bg-color: #e6e0d8;
+  --nav-color: linear-gradient(219deg, rgba(60,60,135,1) 32%, rgba(48,48,172,1) 50%, rgba(105,131,197,1) 100%);
 
+  --hover-nav-li: #b1b1d5;
 
+;
+  
+}
 /**********************GLOBAL**************************/
+*  {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow:auto;
+}
+
+img {
+  pointer-events: none;
+}
+
+html,
+body {
+  background-color: var(--main-bg-color);
+  padding: 0;
+  margin: 0;
+  font-family: "Baloo Medium";
+  color:rgba(0, 0, 0, 0.98);
+  width:100vw;
+  height:100vh;
+  
+  max-width:100%;
+  
+}
+h1{
+  font-family:"Avenir Medium";
+  font-weight: bold;
+  
+  
+
+}
+
+
+h2{
+  
+  
+}
+
+
+p{
+  
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+ul{
+  
+}
+
+li{
+  
+}
+
+nav {
+  width:100%;
+}
+
 
 
 /**********************HEADER*************************/
@@ -89,13 +158,50 @@ body {
 
 /*NAV*/
 
+.navbar{
+ background: var( --nav-color);
+  padding: 1em 1.9em;
+
+}
+
+.navbar ul{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  
+}
+
+
+
+.navbar li {
+ /* white-space: nowrap;
+	border: none;
+	font-family: "Baloo Medium";
+ */
+  
+}
+
+.link{
+   transition: 0.4s all ease;
+}
+
+.link:hover  {
+    color: var(--main-bg-color) ;
+  }
+
+
 
 
 /*NAV LOGIN*/
 
 
 
+
+
 /*NAV ADMIN*/
+
+/**********************FORM*************************/
+
 
 
 /**********************FORM REGISTER/LOGIN*************************/

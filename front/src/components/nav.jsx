@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
-import {useContext, Fragment, useEffect} from "react"
+import {useContext, Fragment, useEffect, useState} from "react"
 import { ReducerContext } from "./reducer/reducer";
 import Navcategorie from "./navcategories"
 import BASE_URL from '../config/Api';
 import {LOGIN,ADMIN} from '../config/constante.js';
 import axios from 'axios';
-import styles  from "../App.css"
+
 
 
 const Nav = (props) => {
@@ -29,72 +29,81 @@ const Nav = (props) => {
     }
   })
   
+  
+  
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to="/">
-            HOME
-          </NavLink>
+    <nav className="navbar">
+      
+        <ul>
           
-        </li>
-        {!state.login &&
-        <Fragment>
-          <li>
-              <NavLink to="/register">
-              REGISTER
-              </NavLink>
-          </li>
-          <li>
-            <NavLink to="/login">
-              LOGIN
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/articles">
-              ARTICLES
-            </NavLink>
-          </li>
-          
-         
-          
-          
-        </Fragment>
-        }
-        {state.login && 
+          {!state.login &&
           <Fragment>
             <li>
-              <NavLink to="/profil">
-                PROFIL
+              <NavLink className="link" to="/">
+                La Brocante du flux
               </NavLink>
             </li>
-          <li>
-            <NavLink to="/addArticle">
-              ADDARTICLE
-            </NavLink>
-          </li>
-           <li>
-            <NavLink to="/articles">
-              ARTICLES
-            </NavLink>
-          </li>
+            <li>
+                <NavLink className="link" to="/register">
+                Register
+                </NavLink>
+            </li>
+            <li>
+              <NavLink className="link" to="/login">
+                Login
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className= "link" to="/articles">
+                Articles
+              </NavLink>
+            </li>
+            
            
-          <li>
-              <NavLink to="/logout">
-                LOGOUT
+            
+            
+          </Fragment>
+          }
+          {state.login && 
+            <Fragment>
+              <li>
+                <NavLink to="/">
+                La Brocante du flux
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/profil">
+                  PROFIL
+                </NavLink>
+              </li>
+            <li>
+              <NavLink to="/addArticle">
+                ADDARTICLE
               </NavLink>
             </li>
-             <Navcategorie/>
-          </Fragment>
-        }
-        {state.admin && 
-          <li>
-            <NavLink to="/admin">
-              ADMIN
-            </NavLink>
-          </li>
-        }
-      </ul>
+             <li>
+              <NavLink to="/articles">
+                ARTICLES
+              </NavLink>
+            </li>
+             
+            <li>
+                <NavLink to="/logout">
+                  LOGOUT
+                </NavLink>
+              </li>
+               <Navcategorie/>
+            </Fragment>
+          }
+          {state.admin && 
+            <li>
+              <NavLink to="/admin">
+                ADMIN
+              </NavLink>
+            </li>
+          }
+        </ul>
+       
     </nav>
   );
 };

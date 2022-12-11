@@ -1,4 +1,3 @@
-import styles  from "../App.css"
 import React from "react"
 import { ReducerContext } from "./reducer/reducer";
 
@@ -7,8 +6,8 @@ const Home = () => {
     
     return (
        
-        <div className = "THEME">
-            <h2>Home</h2>
+        <div className = "Home_Container">
+                
         </div>
         
         );
