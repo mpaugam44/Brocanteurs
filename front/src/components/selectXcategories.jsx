@@ -66,9 +66,9 @@ const Selection=({updateForm, value})=>{
     
     return (
         
-        <div>
+        <div className="select-wrapper">
             <h3>Choisissez votre catégorie</h3>
-            <label>
+            <label className="label_uniform">
                 Categorie:
                 
                 <select value={allData.categorie} required onChange={(e) => handleChange(e.target.value,'categorie')}>
@@ -80,7 +80,7 @@ const Selection=({updateForm, value})=>{
             </label>
             
             {showMarque.includes(allData.categorie) && 
-                <label>
+                <label className="label_uniform">
                     Marque
                     <select value={allData.marque} required onChange={(e) => handleChange(e.target.value,'marque')}>
                         {marques[0] && marques.map((e,i) => {
@@ -92,14 +92,14 @@ const Selection=({updateForm, value})=>{
             
             {allData.categorie === "5" && 
                 <Fragment>
-                    <label>
-                        type Vinyle
+                    <label className="label_uniform">
+                         Vinyle
                         <select value={allData.vinyle} required onChange={(e) => handleChange(e.target.value,'vinyle')}>
                             <option value="1">33 RPM</option>
                             <option value="2">45 RPM</option>
                         </select>
                     </label>
-                    <label>
+                    <label className="label_uniform">
                         Genre
                         <select value={allData.genre} required onChange={(e) => handleChange(e.target.value,'genre')}>
                             {genres[0] && genres.map((e,i) => { 
@@ -113,7 +113,7 @@ const Selection=({updateForm, value})=>{
             }
             
             {showDecennies.includes(allData.categorie) && 
-                <label>
+                <label className="label_uniform">
                     Decennies
                     <select value={allData.decennie} required onChange={(e) => handleChange(e.target.value,'decennie')}>
                         {decennies[0] && decennies.map((e,i) => {

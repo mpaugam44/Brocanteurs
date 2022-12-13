@@ -63,21 +63,7 @@ const PreModify = (props) =>{
     
      return (
     <Fragment>
-            <div  style={{border:'orange 1px solid'}} >
-               <div>titre:{props.article.title}</div>
-                <div>photo:{props.article.pictures}
-                {props.picture && <img src={`http://martinpaugam.sites.3wa.io:9300/img/${props.picture}`} />}
-                </div>
-                <div>date:{props.article.date}</div>
-                <div>description:{props.article.description}</div>
-                <div>categories:{props.article.categories}</div>
-                <div>marque:{props.article.marque}</div>
-                <div>vinyle:{props.article.vinyle}</div>
-                <div>price:{props.article.price}</div>
-                <div>genre:{props.article.genre}</div>
-                <div>decennie:{props.article.decennies}</div>
-             
-            </div>
+           
             
     </Fragment>
     )

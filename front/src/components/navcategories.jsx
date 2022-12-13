@@ -9,26 +9,29 @@ const NavCategorie = () => {
     
     
     return(
-    <nav>
-    
-   
-    <NavLink to ="categorie/2">
-        Enceintes
-    </NavLink>
-    <NavLink to ="categorie/3">
-        Ampli
-    </NavLink>
-    <NavLink to ="categorie/4">
-        Tournedisque
-    </NavLink>
-    <NavLink to ="categorie/5">
-        Vinyles
-    </NavLink>
-     
-    </nav>
-    
-   
-    
+    <Fragment>
+       
+            <li className="navbar_item">
+                <NavLink to ="categorie/2">
+                    Enceintes
+                </NavLink>
+            </li>    
+            <li className="navbar_item">
+                <NavLink to ="categorie/3">
+                    Ampli
+                </NavLink>
+            </li> 
+            <li className="navbar_item">
+                <NavLink to ="categorie/4">
+                Tournedisque
+            </NavLink>
+            </li>
+            <li className="navbar_item">
+                <NavLink to ="categorie/5">
+                    Vinyles
+                </NavLink>
+            </li>
+    </Fragment>
     )
     
 }

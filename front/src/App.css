@@ -82,9 +82,9 @@
 
 :root {
   --main-bg-color: #e6e0d8;
-  --nav-color: linear-gradient(219deg, rgba(60,60,135,1) 32%, rgba(48,48,172,1) 50%, rgba(105,131,197,1) 100%);
-
+  --nav-color: #465D9F;
   --hover-nav-li: #b1b1d5;
+  --textarea-color:#FCFCF3
 
 ;
   
@@ -95,6 +95,7 @@
   padding: 0;
   box-sizing: border-box;
   overflow:auto;
+  outline: none;
 }
 
 img {
@@ -103,7 +104,7 @@ img {
 
 html,
 body {
-  background-color: var(--main-bg-color);
+  background-color:var(--main-bg-color);
   padding: 0;
   margin: 0;
   font-family: "Baloo Medium";
@@ -117,6 +118,7 @@ body {
 h1{
   font-family:"Avenir Medium";
   font-weight: bold;
+  display:block;
   
   
 
@@ -124,6 +126,7 @@ h1{
 
 
 h2{
+  display:flex;
   
   
 }
@@ -158,13 +161,83 @@ nav {
 
 /*NAV*/
 
+header{
+   background: var(--nav-color);
+   width:100vw;
+   min-height:10vh;
+   
+  
+}
+
 .navbar{
- background: var( --nav-color);
-  padding: 1em 1.9em;
+ 
+ height : 90vh;
+ width:100%;
+ position:absolute;
+ background: var(--nav-color);
+ top:10vh;
+ left:0;
+
+ 
 
 }
 
-.navbar ul{
+.hidden{
+  display:none;
+}
+
+
+.navbar_links{
+  list-style:none;
+  display:flex;
+  flex-direction :column;
+  justify-content:center;
+  align-items:center; 
+  position:relative;
+  height:auto;
+  gap:5vh;
+  
+  
+  
+}
+
+.navbar_item:nth-child(1){
+  border-top:0.2em solid #fff;
+ 
+}
+
+
+
+.navbar_item{
+  
+  height:auto;
+  width:80vw;
+  border-bottom:0.2em solid #fff;
+  line-height:1.8em;
+  margin-right:0.5rem;
+  color:white;
+  cursor:pointer;
+  display:flex;
+  flex-direction :column;
+  justify-content:center;
+  align-items:center; 
+  
+}
+
+.navbar_button{
+  height:3em;
+  width:3em;
+  display:block;
+  position:absolute;
+  right:0.2em;
+  top:0.2em;
+  cursor:pointer;
+  color:black;
+  background-color:var(--main-bg-color);
+}
+
+
+/*.navbar ul{
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
@@ -174,10 +247,10 @@ nav {
 
 
 .navbar li {
- /* white-space: nowrap;
+  white-space: nowrap;
 	border: none;
 	font-family: "Baloo Medium";
- */
+ 
   
 }
 
@@ -187,7 +260,7 @@ nav {
 
 .link:hover  {
     color: var(--main-bg-color) ;
-  }
+  }*/
 
 
 
@@ -202,12 +275,118 @@ nav {
 
 /**********************FORM*************************/
 
+form {
+  padding: 3.5em 1.7em;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  /*transition: all 0.3s ease 0s;*/
+  gap:2.5vh;
+  
+  
+}
+
+form input {
+  
+  background-color: var(--textarea-color);
+  border-style: none solid solid none;
+}
+
+form p  {
+  
+  width:100%;
+}
+
+select{
+  font-family:inherit;
+  
+}
+select option {
+  background-color:var(textarea-color);
+}
+
+.label_uniform{
+  display:flex;
+  gap:2vw;
+  
+}
+
+.select-wrapper{
+    
+    display:flex;
+    flex-direction:column;
+    gap:1vh;
+    height: auto;
+    width: 60vw;
+    /*color: #444;*/
+    background: transparent;
+    
+
+  
+}
+
+.select-wrapper > select {
+    width: 100%;
+    height:100%;
+    background: blue;
+    border: 0;
+    appearance: none;
+    z-index: 1;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+
+textarea {
+  resize:none;
+  width: 70vw;
+  height: 10em;
+  background-color: var(--textarea-color);
+  border-image: none;
+  border-radius: 5px 5px 5px 5px;
+  border-style: none solid solid none;
+  border-width: medium 1px 1px medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+  color: #555555;
+  font-size: 1em;
+  line-height: 1.4em;
+ 
+  
+}
+
+textarea:focus {
+  
+background-color :white;
+}
+
+input[type=file] {
+  
+  border-style:inherit;
+  background-color:inherit;
+
+}
+
+input[type=submit] {
+  margin-top:3vh;
+ 
+  
+}
+
 
 
 /**********************FORM REGISTER/LOGIN*************************/
+.form_register{
+  font-size:1.5em;
+  gap:3em;
+}
 
+.input_register{
+  width:15em;
+  margin-left:1em;
+}
 
 /**********************FORM ADD*************************/
+
 
 
 /**********************FORM MODIFY/DELETE*************************/
@@ -217,7 +396,37 @@ nav {
 
 
 /*********************************************MEDIA QUERIES****************************************/
+@media screen and (min-width : 900px){
+  
+  
+  
+  
+  .navbar_links{
+    
+    width:80vw;
+    display:flex;
+    justify-content:center;
+    align-items:center; 
+   
+    flex-direction:row;
+    
+  }
+  .navbar_button{
+    display:none;
+  }
 
+.navbar_item{
+  width:auto;
+  margin-right:0.5rem;
+  color:white;
+  cursor:pointer;
+  display:flex;
+  justify-content:center;
+  align-items:center; 
+  flex-direction:row;
+}
+
+}
 
 /****************************TABLETTE***********************************/
 

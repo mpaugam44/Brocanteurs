@@ -77,29 +77,30 @@ const Addarticle = () => {
     })
    
     return (
-        <form onSubmit={submit} encType="multipart/form-data">
+        <form  onSubmit={submit} encType="multipart/form-data">
             
-            <label>
+            <label className="label_uniform">
                 Titre
                 <input type='text' value={titre} onChange={(e) => setTitre(e.target.value)} required/>
             </label>
             <label>
                 Description
-                <input type='text' value={description} onChange={(e) => setDescription(e.target.value)} required />
+                <textarea type='text' placeholder="Veuillez ajouter votre description" value={description} onChange={(e) => setDescription(e.target.value)} required> </textarea>
             </label>
-            <label>
-                Prix
-                <input type='number' value={prix} onChange={(e) => setPrix(e.target.value)} required />
-            </label>
-            <label>
+            <div className="label_uniform">
+                <i>€</i>
+                <input type="number" value={prix} placeholder="0.00" onChange={(e) => setPrix(e.target.value)} required /> 
+            </div>
+                 
+            <label className="label_uniform">
                 Photo
-                <input type='file' name='picture' required/>
+                <input  type='file' name='picture' required/>
             </label>
             <Selection updateForm={updateCat} />
             
             <input type='submit' value='Ajouter votre produit' />
             
-            { msg !== ""  && <p> {msg} </p> }
+            { msg !== ""  && <p className="msg_alerte"> {msg} </p> }
             
             
         </form>

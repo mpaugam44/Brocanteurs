@@ -5,7 +5,7 @@ import PreModify from "./preArticleModify.jsx"
 import Selection from './selectXcategories.jsx'
 import DeleteArt from './deletearticle.jsx'
 import {ReducerContext} from "./reducer/reducer"
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 
 const ModifyArt = () => {
     
@@ -30,13 +30,63 @@ const ModifyArt = () => {
     })
     const [ picture, setPicture] = useState ("")
     
+    const getParams = () => {
+        // console.log(path)
+        const pathTable = path.pathname.split('/');
+        // split des éléments de l'url pour les mettre dans un tableau
+        const id = pathTable[pathTable.length-1];
+        // dernier élément du tableau grâce à length-1
+        setArticleId(id);
+        // capacité grâce à setArticleId d'aller modifier l'id
+        
+    }
+      
+    useEffect(() => {
+        getParams()
+    } ,[])
+    // on appelle notre fonction getParams pour aller choper l'id de l'article au rafraichissment de la page
+    
+    useEffect(() => {
+        if(articleId) {
+            getInfos()
+            
+        }  
+    }, [articleId]) 
+
+    const path = useLocation();
+
+    
+    
+    const getInfos = () => {
+        
+        axios.get(`${BASE_URL}/articledetails/${articleId}`)
+        
+        // ce get ne sert qu'à aller chercher notre articleId et ce qu'il contient
+        .then((res) => {
+            if(res.data.response){
+            
+                updateArticle(res.data.article[0])
+                setPicture(res.data.url[0].url)
+               
+                //on fait le .url[0].url pour aller chercher le premier url
+                // on va chercher le setArticle car le setArticleId est déjà chargé par la fonction getParams
+                
+            } else {
+                console.log(res.data.message)
+            
+            }
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+        .then(() => {
+           
+        })
+    } 
      const updateCat = (data) => {
         setSelect(data)
     }
     
-    const updateArticleId = (data) => {
-        setArticleId(data)
-    }
     
     const updateArticle = (data) => {
         console.log(data)
@@ -64,9 +114,7 @@ const ModifyArt = () => {
         
     }
     
-    const updatePicture = (data) => {
-        setPicture(data)
-    }
+    
         const modifySubmit = (e) => {
             e.preventDefault()
             const files = {...e.target.picture.files}
@@ -101,31 +149,35 @@ const ModifyArt = () => {
                 })
             }
             
-        
-            useEffect (()=>{
-            
-            })
     
     return (
         <Fragment>
+        
        
-            
+           
             {state.userid === article.user_id &&
+           
+           <Fragment>
+            <button onClick={() =>navigate(`/articledetails/${articleId}`)} > Retour à l'article </button> 
+            
+            
                 <form onSubmit={modifySubmit} encType="multipart/form-data">
         
-                    <label>
+                    <label className="label_uniform">
                         Titre
                         <input type='text' value={article.title} required onChange={(e) => setArticle({...article,title:e.target.value})} />
                     </label>
                     <label>
                         Description
-                        <input type='text' value={article.description} required onChange={(e) => setArticle({...article,description:e.target.value})} />
+                         <textarea type='text' placeholder="Veuillez ajouter votre description" value={article.description}  onChange={(e) => setArticle({...article,description:e.target.value})} required >
+                         </textarea>
+                         
                     </label>
-                    <label>
+                    <label className="label_uniform">
                         Prix
                         <input type='number' value={article.price} required onChange={(e) => setArticle({...article,price:e.target.value})} />
                     </label>
-                    <label>
+                    <label className="label_uniform">
                         Photo
                         <input type='file' name='picture' />
                     </label>
@@ -134,10 +186,15 @@ const ModifyArt = () => {
                     
                     <input type='submit' value='Ajouter vos modifications' />
                     { msg !== ""  && <p> {msg} </p> }
+                    
+                    
                 </form>
-                            
+            </Fragment>
+                                        
             }
-                <DeleteArt articleId ={articleId} picture={picture}/>                
+                <DeleteArt articleId ={articleId} picture={picture}/>          
+                
+                
     
         </Fragment>
         

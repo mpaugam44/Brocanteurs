@@ -57,16 +57,16 @@ const Register = () => {
       { messagerr !== "" && 
       <p>{messagerr}</p>
       }
-        <form onSubmit= {submit}>
+        <form className ="form_register" onSubmit= {submit}>
             <label>
                 Email:
-                <input type='email' value={email} required  onChange={(e) => setEmail(e.target.value)} />
+                <input className="input_register" type='email' value={email} required  onChange={(e) => setEmail(e.target.value)} />
             </label>
             <label>
                 Password:
-                <input type='password' value={password}  required onChange={(e) => setPassword(e.target.value)} />
+                <input className="input_register" type='password' value={password}  required onChange={(e) => setPassword(e.target.value)} />
             </label>
-            <input type="submit" value="valider"/>
+            <input type="submit" value="Valider"/>
         </form>
       </div>  
     )

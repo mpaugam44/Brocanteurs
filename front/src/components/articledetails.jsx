@@ -79,26 +79,29 @@ const ArticleDetails = () =>{
      return (
     <Fragment>
  
-            <div  style={{border:'orange 1px solid'}} >
-               <div>titre:{article.title}</div>
-                <div>photo:{article.pictures}
-                { picture && <img src={`http://martinpaugam.sites.3wa.io:9300/img/${picture}`} />}
+            <div >
+               <div>{article.title}</div>
+                <div>{article.pictures}
+                { picture && <img  alt={`${article.title} Image d'article`} src={`http://martinpaugam.sites.3wa.io:9300/img/${picture}`} />}
                 </div>
                 <div>date:{article.date}</div>
                 <div>description:{article.description}</div>
-                <div>categories:{article.categorie_id}</div>
-                <div>marque:{article.id_marque}</div>
+                <div>categories:{article.categories_name}</div>
+                <div>marque:{article.marque_name}</div>
                 {article.id_vinyle && 
                 <div>vinyle:{article.id_vinyle ===1 ? "33 RPM" : "45 RPM" } </div> }
-                <div>genre:{article.genre_ID}</div>
+                <div>genre:{article.genre_name}</div>
                 <div>price:{article.price}</div>
-                <div>decennies:{article.decennie_ID}</div>
+                <div>decennies:{article.decennie_date}</div>
             </div>
             
             {state.login &&
             <Fragment>
                 <AddComs />
+                
                 <AllComs commentaire={commentaire} user_id={article.user_id} />
+                
+                
                 { (state.userid === article.user_id || state.admin) && 
                 <NavLink to = {`/modifyArticle/${article.id}`}>
                     Modifier/Supprimer article
