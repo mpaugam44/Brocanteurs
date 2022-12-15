@@ -43,19 +43,12 @@ const Nav = (props) => {
   },[path])
   
   
-  
-  
-  
-  
-  
-  
-  
   return (
     
     <header> 
       <div className="navbar_NAME">
-          <NavLink className="link" to="/">
-              La Brocante du flux
+          <NavLink to="/">
+              La Brocante du Flux
           </NavLink>
       </div>
       <nav className={menu ? "navbar": "hidden"}>
@@ -86,15 +79,10 @@ const Nav = (props) => {
             {state.login && 
               <Fragment>
                 <li className="navbar_item">
-                  <NavLink className ="link" to="/profil">
-                    Profil
+                  <NavLink  className ="link" to="/addArticle">
+                    Ajout d'article
                   </NavLink>
                 </li>
-              <li className="navbar_item">
-                <NavLink  className ="link" to="/addArticle">
-                  Ajout d'article
-                </NavLink>
-              </li>
                  <li className="navbar_item">
                   <NavLink className ="link" to="/articles">
                     Articles
@@ -119,13 +107,12 @@ const Nav = (props) => {
             </ul>
            
         </nav>
-         <button className ="navbar_button" onClick={()=>setMenu(!menu) } >
-              Menu
+         <button className ="navbar_button" onClick={()=>setMenu(!menu)} >
+              {menu ?  <AiOutlineClose className="close_navbar"/> : <AiOutlineMenu className="open_navbar"/>}
             </button>
     </header>  
   );
 };
 
-/*onClick={()=>menu ? <AiOutlineMenu/> : <AiOutlineClose/> }*/
 
 export default Nav;

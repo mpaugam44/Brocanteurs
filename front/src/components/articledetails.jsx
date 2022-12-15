@@ -15,10 +15,12 @@ const ArticleDetails = () =>{
     const [ picture, setPicture] = useState ("")
     const [commentaire, setCommentaire] = useState ([])
    
+   
     useEffect(() => {
+        
         getParams()
     } ,[])
-    // on appelle notre fonction getParams pour aller choper l'id de l'article au rafraichissment de la page
+    // on appelle notre fonction getParams pour aller prendre l'id de l'article au rafraichissment de la page
     
     useEffect(() => {
         if(articleId) {
@@ -79,20 +81,20 @@ const ArticleDetails = () =>{
      return (
     <Fragment>
  
-            <div >
-               <div>{article.title}</div>
-                <div>{article.pictures}
+            <div className="details_container">
+               <div className="title_article">{article.title}</div>
+                <div className="image_article">{article.pictures}
                 { picture && <img  alt={`${article.title} Image d'article`} src={`http://martinpaugam.sites.3wa.io:9300/img/${picture}`} />}
                 </div>
-                <div>date:{article.date}</div>
-                <div>description:{article.description}</div>
-                <div>categories:{article.categories_name}</div>
-                <div>marque:{article.marque_name}</div>
+                <div>Date:{article.date}</div>
+                <div>Description:{article.description}</div>
+                <div>Categories:{article.categories_name}</div>
+                <div>Marque:{article.marque_name}</div>
                 {article.id_vinyle && 
                 <div>vinyle:{article.id_vinyle ===1 ? "33 RPM" : "45 RPM" } </div> }
-                <div>genre:{article.genre_name}</div>
-                <div>price:{article.price}</div>
-                <div>decennies:{article.decennie_date}</div>
+                <div>Genre:{article.genre_name}</div>
+                <div>Price:{article.price} €</div>
+                <div>Decennies:{article.decennie_date}</div>
             </div>
             
             {state.login &&

@@ -8,7 +8,7 @@ const BASE_URL = `${host}:${port}`
 const allArticlesFromCat = (req, res) =>{
     const {id} = req.params
 
-    let SelectionCat = 'SELECT articles.*,pictures.url FROM articles JOIN pictures ON pictures.article_id = articles.id WHERE categorie_id = ? '
+    let SelectionCat = 'SELECT articles.*,DATE_FORMAT(articles.date, "%d/%m/%Y %H:%i") AS date,pictures.url FROM articles JOIN pictures ON pictures.article_id = articles.id WHERE categorie_id = ? '
     
     pool.query( SelectionCat,[id],( error, articles, fields) => {
         res.json({response:true,

@@ -39,14 +39,14 @@ const Login = () => {
         })
     };
     return (
-        <div>
-            <h2>Formulaire de connexion</h2>
-            <form onSubmit={submit}>
+        <div className="connexion_container">
+            <h2 className="title_form" >Formulaire de Connexion</h2>
+            <form className="form_container_co"onSubmit={submit}>
                 <label>Mail : </label>
-                <input type="email" value={email}  required onChange={(e) => setEmail(e.target.value)} />
+                <input className="input_co" type="email" value={email}  required onChange={(e) => setEmail(e.target.value)} />
                 
                 <label>Password : </label>
-                <input type="password" value={password} required  onChange={(e) => setPassword(e.target.value)}/>
+                <input className="input_co" type="password" value={password} required  onChange={(e) => setPassword(e.target.value)}/>
                 
                 <input type="submit" value="valider"/>
             </form>

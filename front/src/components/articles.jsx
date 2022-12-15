@@ -28,7 +28,7 @@ const ShowArticles = () => {
     
     return (
     <Fragment>
-       
+        <div className="articles_container">
         {articles[0] && articles.map((e,i) => 
             <div key={i}>
             <NavLink to = {`/articledetails/${e.id}`}>
@@ -36,13 +36,14 @@ const ShowArticles = () => {
             </NavLink>
                
                <div>{e.title}</div>
-                <div>
+                <div className="image_article" >
                 <img alt={`${articles.title} Image d'article`} src={`http://martinpaugam.sites.3wa.io:9300/img/${e.url}`} />
                 </div>
                 <div>{e.date}</div>
-               <div>{e.price}</div>
+               <div>{e.price}€</div>
             </div>
         )}
+        </div>
     </Fragment>
     )
     

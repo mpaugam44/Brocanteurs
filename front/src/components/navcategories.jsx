@@ -12,22 +12,22 @@ const NavCategorie = () => {
     <Fragment>
        
             <li className="navbar_item">
-                <NavLink to ="categorie/2">
+                <NavLink className="link" to ="categorie/2">
                     Enceintes
                 </NavLink>
             </li>    
             <li className="navbar_item">
-                <NavLink to ="categorie/3">
+                <NavLink className="link" to ="categorie/3">
                     Ampli
                 </NavLink>
             </li> 
             <li className="navbar_item">
-                <NavLink to ="categorie/4">
+                <NavLink className="link" to ="categorie/4">
                 Tournedisque
             </NavLink>
             </li>
             <li className="navbar_item">
-                <NavLink to ="categorie/5">
+                <NavLink className="link" to ="categorie/5">
                     Vinyles
                 </NavLink>
             </li>

@@ -52,19 +52,19 @@ const Register = () => {
     };
 
     return (
-      <div>
-      <h2>Inscription</h2>
+      <div className="inscription_container">
+      <h2 className="title_form">Inscription</h2>
       { messagerr !== "" && 
       <p>{messagerr}</p>
       }
-        <form className ="form_register" onSubmit= {submit}>
+        <form className ="form_container" onSubmit= {submit}>
             <label>
                 Email:
-                <input className="input_register" type='email' value={email} required  onChange={(e) => setEmail(e.target.value)} />
+                <input className="input_co" type='email' value={email} required  onChange={(e) => setEmail(e.target.value)} />
             </label>
             <label>
                 Password:
-                <input className="input_register" type='password' value={password}  required onChange={(e) => setPassword(e.target.value)} />
+                <input className="input_co" type='password' value={password}  required onChange={(e) => setPassword(e.target.value)} />
             </label>
             <input type="submit" value="Valider"/>
         </form>

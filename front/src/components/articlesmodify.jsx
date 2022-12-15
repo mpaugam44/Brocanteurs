@@ -1,7 +1,6 @@
-import {React, useState, useEffect, useContext, Fragment} from 'react'
+import { useState, useEffect, useContext, Fragment} from 'react'
 import BASE_URL from "../config.js"
 import axios from 'axios'
-import PreModify from "./preArticleModify.jsx"
 import Selection from './selectXcategories.jsx'
 import DeleteArt from './deletearticle.jsx'
 import {ReducerContext} from "./reducer/reducer"
@@ -151,6 +150,7 @@ const ModifyArt = () => {
             
     
     return (
+        <div className="modify_container">
         <Fragment>
         
        
@@ -192,11 +192,12 @@ const ModifyArt = () => {
             </Fragment>
                                         
             }
-                <DeleteArt articleId ={articleId} picture={picture}/>          
+                <DeleteArt className="delete_article" articleId ={articleId} picture={picture}/>          
                 
                 
     
         </Fragment>
+        </div>
         
     )
 }
