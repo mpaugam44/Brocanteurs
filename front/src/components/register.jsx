@@ -28,7 +28,7 @@ const Register = () => {
             }
             else{
                 if(!checkRegExPassword(password)){
-                    SetMessagerr("Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre, un caractère spéciale")    
+                    SetMessagerr("Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre, un caractère spécial")    
                 }
                 else{
                 

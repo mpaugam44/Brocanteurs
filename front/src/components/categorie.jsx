@@ -14,7 +14,7 @@ const GetCategorie   = () => {
     const path = useLocation();
 
     const getParams = () => {
-        // console.log(path)
+        
         const pathTable = path.pathname.split('/');
         // split des éléments de l'url pour les mettre dans un tableau
         const id = pathTable[pathTable.length-1];
@@ -50,21 +50,21 @@ const GetCategorie   = () => {
     
     
         
-    return (
+    return(
             
              <Fragment>
                 <div className="articles_container">
                     {articles[0] && articles.map((e,i) => 
-                        <div key={i}>
-                            <NavLink to = {`/articledetails/${e.id}`}>
+                        <div className="article_container" key={i}>
+                            <div className="title_article">{e.title}</div>
+                            <div className="image_article">
+                            <img alt={`${articles.title} Image d'article`} src={`http://martinpaugam.sites.3wa.io:9300/img/${e.url}`} />
+                            </div>
+                            <div className="text_article">{e.date}</div>
+                            <div className="text_article">{e.price} €</div>
+                             <NavLink to = {`/articledetails/${e.id}`}>
                             Voir details
                             </NavLink>
-                                <div>Titre:{e.title}</div>
-                                <div className="image_article">Photo:
-                                <img  src={`http://martinpaugam.sites.3wa.io:9300/img/${e.url}`} />
-                                </div>
-                                <div>date:{e.date}</div>
-                                <div>price:{e.price} €</div>
                         </div>
                     )}
                 </div>

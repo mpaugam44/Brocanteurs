@@ -77,7 +77,7 @@ const Addarticle = () => {
     })
    
     return (
-        <form  onSubmit={submit} encType="multipart/form-data">
+        <form className="add_container" onSubmit={submit} encType="multipart/form-data">
             
             <label className="label_uniform">
                 Titre

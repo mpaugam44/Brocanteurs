@@ -17,7 +17,7 @@ const register = (req,res) => {
             if (error) throw error;
             
             if(user[0]) {
-                res.json({response:false, message:'Email deja present'});
+                res.json({response:false, message:'Email déjà present'});
             } else {
                 bcrypt.hash(req.body.password, saltRounds, function(err, hash){
                     if(err) throw err;

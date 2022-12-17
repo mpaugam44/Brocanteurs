@@ -1,7 +1,6 @@
 import {Fragment} from 'react'
 import BASE_URL from "../config.js"
 import axios from 'axios'
-import { LOGIN, ADMIN } from "../config/constante.js"
 import {useNavigate} from "react-router-dom";
 const DeleteArt = (props) => {
     
@@ -30,7 +29,7 @@ const DeleteArt = (props) => {
    return (
             <Fragment>       
                 <div>
-                    <button onClick={onClick}>
+                    <button className="delete_article" onClick={onClick}>
                         Supprimer Article                                          
                     </button>
                 </div>

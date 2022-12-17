@@ -187,12 +187,12 @@ const ModifyArt = () => {
                     <input type='submit' value='Ajouter vos modifications' />
                     { msg !== ""  && <p> {msg} </p> }
                     
-                    
+                    <DeleteArt  articleId ={articleId} picture={picture}/> 
                 </form>
             </Fragment>
                                         
             }
-                <DeleteArt className="delete_article" articleId ={articleId} picture={picture}/>          
+                         
                 
                 
     

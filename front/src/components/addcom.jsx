@@ -38,23 +38,25 @@ const AddComs = () => {
     }    
     
     return(
-    <form onSubmit={submit} encType="multipart/form-data">
-            <label className="label_uniform">
-                Name
-                <input type='text' value={name} onChange={(e) => setName(e.target.value)} required />
-            </label>
-            <label>
-                Votre commentaire
-                <textarea type='text'placeholder="Veuillez ajouter votre commentaire" value={description} onChange={(e) => setDescription(e.target.value)} required >
-                </textarea>
-            </label>
-            <label className="label_uniform">
-               Email
-                <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
-            </label>
-           
-            <input type='submit' value='Ajouter votre commentaire' />
-        </form>
+            <div className="addcom_container">
+                <form onSubmit={submit} encType="multipart/form-data">
+                        <label className="label_uniform">
+                            Name
+                            <input type='text' value={name} onChange={(e) => setName(e.target.value)} required />
+                        </label>
+                        <label>
+                            Votre commentaire
+                            <textarea type='text'placeholder="Veuillez ajouter votre commentaire" value={description} onChange={(e) => setDescription(e.target.value)} required >
+                            </textarea>
+                        </label>
+                        <label className="label_uniform">
+                           Email
+                            <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        </label>
+                       
+                        <input type='submit' value='Ajouter votre commentaire' />
+                </form>
+            </div>   
     )
     
 }

@@ -86,15 +86,17 @@ const ArticleDetails = () =>{
                 <div className="image_article">{article.pictures}
                 { picture && <img  alt={`${article.title} Image d'article`} src={`http://martinpaugam.sites.3wa.io:9300/img/${picture}`} />}
                 </div>
-                <div>Date:{article.date}</div>
-                <div>Description:{article.description}</div>
-                <div>Categories:{article.categories_name}</div>
-                <div>Marque:{article.marque_name}</div>
-                {article.id_vinyle && 
-                <div>vinyle:{article.id_vinyle ===1 ? "33 RPM" : "45 RPM" } </div> }
-                <div>Genre:{article.genre_name}</div>
-                <div>Price:{article.price} €</div>
-                <div>Decennies:{article.decennie_date}</div>
+                <div className="text_article">
+                    <div>{article.date}</div>
+                    <div>Description:{article.description}</div>
+                    <div>{article.categories_name}</div>
+                    <div>{article.marque_name}</div>
+                    {article.id_vinyle && 
+                    <div>{article.id_vinyle ===1 ? "33 RPM" : "45 RPM" } </div> }
+                    <div>{article.genre_name}</div>
+                    <div>{article.price} €</div>
+                    <div>Decennies:{article.decennie_date}</div>
+                </div>    
             </div>
             
             {state.login &&
@@ -103,9 +105,8 @@ const ArticleDetails = () =>{
                 
                 <AllComs commentaire={commentaire} user_id={article.user_id} />
                 
-                
                 { (state.userid === article.user_id || state.admin) && 
-                <NavLink to = {`/modifyArticle/${article.id}`}>
+                <NavLink className={"multiple_redirect"} to = {`/modifyArticle/${article.id}`}>
                     Modifier/Supprimer article
                 </NavLink>
                 }

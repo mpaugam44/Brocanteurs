@@ -41,13 +41,13 @@ const Login = () => {
     return (
         <div className="connexion_container">
             <h2 className="title_form" >Formulaire de Connexion</h2>
-            <form className="form_container_co"onSubmit={submit}>
-                <label>Mail : </label>
+            <form className="form_container"onSubmit={submit}>
+                <label>Mail : 
                 <input className="input_co" type="email" value={email}  required onChange={(e) => setEmail(e.target.value)} />
-                
-                <label>Password : </label>
+                </label>
+                <label>Password : 
                 <input className="input_co" type="password" value={password} required  onChange={(e) => setPassword(e.target.value)}/>
-                
+                </label>
                 <input type="submit" value="valider"/>
             </form>
         </div>

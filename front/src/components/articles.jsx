@@ -1,7 +1,6 @@
 import {useState,useEffect, Fragment} from 'react'
 import BASE_URL from "../config.js"
 import axios from 'axios'
-import { LOGIN, ADMIN } from "../config/constante.js"
 import { NavLink } from "react-router-dom";
 
 const ShowArticles = () => {
@@ -27,24 +26,23 @@ const ShowArticles = () => {
     
     
     return (
-    <Fragment>
-        <div className="articles_container">
-        {articles[0] && articles.map((e,i) => 
-            <div key={i}>
-            <NavLink to = {`/articledetails/${e.id}`}>
-            Voir details
-            </NavLink>
-               
-               <div>{e.title}</div>
-                <div className="image_article" >
-                <img alt={`${articles.title} Image d'article`} src={`http://martinpaugam.sites.3wa.io:9300/img/${e.url}`} />
-                </div>
-                <div>{e.date}</div>
-               <div>{e.price}€</div>
+        <Fragment>
+            <div className="articles_container">
+                {articles[0] && articles.map((e,i) => 
+                    <div key={i} className="article_container">
+                        <div className="title_article">{e.title}</div>
+                        <div className="image_article" >
+                        <img alt={`${articles.title} Image d'article`} src={`http://martinpaugam.sites.3wa.io:9300/img/${e.url}`} />
+                        </div>
+                        <div className="text_article">{e.date}</div>
+                        <div className="text_article"> {e.price}€</div>
+                        <NavLink  to = {`/articledetails/${e.id}`}>
+                        Voir details
+                        </NavLink>
+                    </div>
+                )}
             </div>
-        )}
-        </div>
-    </Fragment>
+        </Fragment>
     )
     
     

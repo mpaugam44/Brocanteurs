@@ -67,7 +67,7 @@ const addArticle = (req, res) => {
                                     if (err) throw err;
                                     fs.copyFile(oldPath, newPath, (err) => {
                                         if (err) throw err;
-                                        res.json({response:true})
+                                                    res.json({response:true})
                                             })
                                         })
                             })
