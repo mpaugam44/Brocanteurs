@@ -15,3 +15,6 @@ const Routeur = () => {
 };
 
 export default Routeur;
+
+
+//ici nous configurons notre routeur front pour appeler toutes nos routes vers les composants jsx.

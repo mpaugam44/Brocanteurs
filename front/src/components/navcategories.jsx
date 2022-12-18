@@ -1,11 +1,12 @@
-import {Fragment, useEffect, useContext} from 'react'
-import BASE_URL from "../config.js"
-import { LOGIN, ADMIN } from "../config/constante.js"
+import {Fragment} from 'react'
 import { NavLink } from "react-router-dom";
 
 
-
+// Ici nous appelons juste notre composant NavCategorie que nous allons elle même appelerdans la nav principale.
+// Seulement à l'état de user conecté.
 const NavCategorie = () => {
+    
+
     
     
     return(

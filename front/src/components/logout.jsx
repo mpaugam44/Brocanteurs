@@ -16,4 +16,6 @@ const Logout = () => {
     },[])
 };
 
+// Ici au onClick de Logout, on va supprimer le token de la session en ma fermant 
+// on est redirigé ver la Home
 export default Logout;

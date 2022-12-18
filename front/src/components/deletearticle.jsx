@@ -26,6 +26,9 @@ const DeleteArt = (props) => {
         })
     }
     
+    
+// Ici nous appelons notre const Onclick dans le but delete l'article et ainsi de le faire disparaitre dans la bdd gra^ce au axios.post    
+    
    return (
             <Fragment>       
                 <div>

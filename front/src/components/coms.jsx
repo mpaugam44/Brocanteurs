@@ -10,16 +10,14 @@ const AllComs = ({commentaire, user_id}) => {
          setComs(commentaire)
     },[commentaire])
      
-/*    const verifId = () => {
-       SetUserId(!userId) 
-    } */
+// explication sur le reducer context
   
     return (
         <Fragment>
             {coms[0] && coms.map((e,i) => 
                 <div className="coms_container" key={i}>
                     <div>Name:{e.name}</div>
-                    <div>Description:{e.description}</div>
+                    <div className="description_container">Description:{e.description}</div>
                     <div>Date:{e.date}</div>
                 {state.userid === user_id &&
                     <div>Email:{e.email}</div>

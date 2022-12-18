@@ -19,7 +19,7 @@ const Register = () => {
             messagerr
         
         };
-        if(!inputsLength([email,password])){ 
+        if(!inputsLength(email,255)|| !inputsLength(password,255)){ 
             SetMessagerr("La longueur des champs n'est pas respectée") 
         }
         else{
@@ -50,7 +50,10 @@ const Register = () => {
             }
         }        
     };
-
+    
+    // Nous configurons à l'intérieur de notre submit toutes les gestions d'erreurs de nos input pour l'inscription de nos utilisateurs
+    // Ces mêmes verifications appelés checkRegex sont appelés via notre  composant dans l'index.js placé dans l'inputLength
+    // Grâce à nos multiples conditions, la contenance des inputs est vérifiés puis envoyé à la base de données via l'axios.post
     return (
       <div className="inscription_container">
       <h2 className="title_form">Inscription</h2>
@@ -64,7 +67,7 @@ const Register = () => {
             </label>
             <label>
                 Password:
-                <input className="input_co" type='password' value={password}  required onChange={(e) => setPassword(e.target.value)} />
+                <input className="input_co" type='password' auto-complete="new-password" value={password}  required onChange={(e) => setPassword(e.target.value)} />
             </label>
             <input type="submit" value="Valider"/>
         </form>

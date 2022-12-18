@@ -81,6 +81,8 @@ h2{
 
 p{
   padding-top:1vh;
+  color: var(--nav-color);
+  font-weight:bold;
   }
 
 a {
@@ -99,8 +101,13 @@ button, input[type=submit]{
   font-weight:bold;
   padding-top: 0.8vh;
   padding-bottom: 0.8vh;
+  transition:0.2s all ease-out;
 }
 
+button:active,input[type=submit]:active{
+  border:none;
+  
+}
 
 
 /**********************HEADER*************************/
@@ -246,6 +253,7 @@ form input {
   border-style: none solid solid none;
   padding-top:1vh;
   padding-bottom:1vh;
+  
 }
 
 form p  {
@@ -407,6 +415,9 @@ input[type=submit] {
   font-weight:bold;
   
 }
+
+
+
 /**********************PAGES ARTICLES/ART PAR CATEGORIE*************************/
 .articles_container{
     
@@ -450,6 +461,7 @@ input[type=submit] {
 
 .articles_container a {
   font-size:1.2em;
+  font-weight:bold;
   
 }
 
@@ -480,10 +492,9 @@ input[type=submit] {
   display: flex;
   margin-top:10vh;
   flex-direction: column;
-  padding-bottom: 1em;
   gap:1vh;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  padding-bottom:1.6vh;
+  padding:1.5vh;
   border-bottom:2.5px solid rgba(62, 74, 123, 0.4) ;
   text-transform:capitalize;
   
@@ -497,7 +508,12 @@ input[type=submit] {
 .coms_container{
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
   gap:1.7vh;
+  padding:1.5vh ;
   
+}
+
+.description_container{
+  overflow-wrap: break-word;
 }
 
 
@@ -524,11 +540,20 @@ input[type=submit] {
 
 
 /****************************TABLETTE***********************************/
-@media screen and (min-width : 900px){
+/*
+@media screen and (min-width :540 px){
   
   
   
+}*/
   
+/****************************DECKSTOP***********************************/
+
+/* @media screen and (min-width : 900px){
+  
+  
+  
+ 
   .navbar_links{
     
     width:80vw;
@@ -556,10 +581,6 @@ input[type=submit] {
 
 }
 
-/****************************DECKSTOP***********************************/
 
-
-
-
-
+*/
 

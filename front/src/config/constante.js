@@ -1,5 +1,4 @@
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
 export const ADMIN = 'ADMIN'
-export const PROFIL = 'PROFIL'
 export const THEME = 'THEME'

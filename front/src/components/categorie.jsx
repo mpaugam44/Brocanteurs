@@ -48,7 +48,7 @@ const GetCategorie   = () => {
         
     },[path.pathname])   
     
-    
+    // On va chercher tout les articles correspondant à une catégorie donnée via l'url soit le path.pathname.
         
     return(
             

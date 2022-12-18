@@ -9,8 +9,6 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
 
 
-
-
 const Nav = (props) => {
   
   const [state, dispatch] = useContext(ReducerContext)
@@ -33,7 +31,7 @@ const Nav = (props) => {
     }
   })
   
-  
+  // Check si session en cours via un useEffect et si oui quel niveau d'accès est autorisé par le res.data.
   const [menu,setMenu] = useState(false);
   
   useEffect (() =>  {
@@ -42,7 +40,7 @@ const Nav = (props) => {
     
   },[path])
   
-  
+  // ici nous configurons notre menu burger placé sur la barre de nav qui ne s'affichera qu'à l'état true grâce à un boutton et sa fonction onClick
   return (
     
     <header> 

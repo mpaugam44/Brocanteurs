@@ -4,6 +4,7 @@ import axios from 'axios'
 import Selection from './selectXcategories.jsx'
 import {useNavigate} from "react-router-dom";
 import {ReducerContext} from "./reducer/reducer"
+import {inputsLength} from "./inputLength/index.js"
 
 const Addarticle = () => {
     
@@ -19,6 +20,7 @@ const Addarticle = () => {
             decennie:"1",
             vinyle:"",
     })
+    //on préremlit notre select via l'id de nos catégories
     const [msg, setMsg] = useState("")
     const navigate = useNavigate();
     
@@ -46,33 +48,45 @@ const Addarticle = () => {
         
          
         if(!files[0]){
-           
-            setMsg("Veuillez fournir une image")
+           setMsg("Veuillez fournir une image")
         }
-            else{
-                
-                axios.post(`${BASE_URL}/addArticle`,dataFile)
-                .then((res) => {
-                    if(res.data.response){
-                        navigate("/articles")
-                        // success
-                    } else {
-                        setMsg(res.data.msg)
+        else{
+            if(!inputsLength(titre,63)){
+               setMsg("Votre titre est trop long")
+            }else{ 
+                if(!inputsLength(description,450)){
+                    setMsg("Votre description est trop longue")
+                }else{
+                    if(!inputsLength(prix,7)){
+                        setMsg("Votre prix est trop important") 
                     }
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-                .then(() => {
-                    setDescription("")
-                    setTitre("")
-                })
-            }    
-        
+                    else{
+                        
+                        axios.post(`${BASE_URL}/addArticle`,dataFile)
+                        .then((res) => {
+                            if(res.data.response){
+                                navigate("/articles")
+                                // success
+                            } else {
+                                setMsg(res.data.msg)
+                            }
+                        })
+                        .catch((err) => {
+                            console.log(err)
+                        })
+                        
+                    }    
+                }    
+                
+            }  
+            
+        }            
     }
     
+    // Avant aller mettre les infos des artciles dans la bdd on vérifie via //nos conditions que l'on a bien une image ou alors on setMsg et si //il y a une photo alors on axios post nos données.
+    
     useEffect(()=> {
-        console.log(msg)
+        
         
     })
    

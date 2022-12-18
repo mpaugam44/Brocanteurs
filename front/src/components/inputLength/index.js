@@ -1,12 +1,9 @@
-export const inputsLength = (inputs,length = 255) => {
-    for(let i=0; i< inputs.length; i++){
-        let maxLength = inputs[i].maxLength || length
-        let value = inputs[i].value || inputs[i]
-        if(value.length > maxLength){
-            return false
-        }
+export const inputsLength = (stringToTest, maxLength) => {
+    if(stringToTest.toString().length <= maxLength){
+        return true;
+    } else {
+        return false
     }
-    return true
 }
 
 export const checkRegExPassword = (password) =>{
@@ -30,3 +27,5 @@ export const checkRegExEmail = (email) =>{
     }
 }
 
+// Ici nous appelons nos cont qui vont vérifier les différents sécurités que nous donnons à nos input 
+// C'est à dire l'email, le mot de passe où nous vérifions les caractères autorisés et la longueur des textes

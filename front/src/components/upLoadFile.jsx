@@ -28,6 +28,7 @@ const UploadFile = () => {
         })
     } 
     
+    // On envoie la photo que l'on a mit dans l'input dans la base de données vers la notre picture.url
     return (
         <Fragment>
             <h1>Ajouter photos</h1>

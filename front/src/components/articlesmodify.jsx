@@ -5,6 +5,7 @@ import Selection from './selectXcategories.jsx'
 import DeleteArt from './deletearticle.jsx'
 import {ReducerContext} from "./reducer/reducer"
 import {useNavigate, useLocation} from "react-router-dom";
+import {inputsLength} from "./inputLength/index.js"
 
 const ModifyArt = () => {
     
@@ -29,6 +30,8 @@ const ModifyArt = () => {
     })
     const [ picture, setPicture] = useState ("")
     
+    
+   // On appelle un à un nos states dont on a besoin.
     const getParams = () => {
         // console.log(path)
         const pathTable = path.pathname.split('/');
@@ -43,7 +46,7 @@ const ModifyArt = () => {
     useEffect(() => {
         getParams()
     } ,[])
-    // on appelle notre fonction getParams pour aller choper l'id de l'article au rafraichissment de la page
+    // on appelle notre fonction getParams pour aller récupérer l'id de l'article au rafraichissment de la page
     
     useEffect(() => {
         if(articleId) {
@@ -54,6 +57,8 @@ const ModifyArt = () => {
 
     const path = useLocation();
 
+
+//
     
     
     const getInfos = () => {
@@ -86,7 +91,7 @@ const ModifyArt = () => {
         setSelect(data)
     }
     
-    
+    //  Remplissage nécessaire imo ? 
     const updateArticle = (data) => {
         console.log(data)
         const newData = {
@@ -110,44 +115,58 @@ const ModifyArt = () => {
         }
         setSelect(dataForSelect)
         setArticle(newData)
-        
+    
     }
+    //On récupère les infos renvoyés pas le getInfos et on les met en formes pour povoir les récupérer
+    //via le formulaire de modification en les mettant en format string dan ce même formulaire. 
     
     
-        const modifySubmit = (e) => {
-            e.preventDefault()
-            const files = {...e.target.picture.files}
+    const modifySubmit = (e) => {
+        e.preventDefault()
+        const files = {...e.target.picture.files}
+    
+        const dataFile = new FormData();
+        dataFile.append('files', files[0])
+        dataFile.append('title', article.title)
+        dataFile.append('description',article.description)
+        select.categorie && dataFile.append('categorie_id', select.categorie)
+        select.marque && dataFile.append('marque_id', select.marque)
+        select.genre && dataFile.append('genre', select.genre)
+        select.decennie && dataFile.append('decennie', select.decennie)
+        select.vinyle && dataFile.append('vinyle_id', select.vinyle)
+        dataFile.append('userid', state.userid)
+        dataFile.append('price', article.price)
+    //on ajoute un par un les fichiers de notre front pour les orienter vers notre bdd via notre back end 
         
-            const dataFile = new FormData();
-            dataFile.append('files', files[0])
-            dataFile.append('title', article.title)
-            dataFile.append('description',article.description)
-            select.categorie && dataFile.append('categorie_id', select.categorie)
-            select.marque && dataFile.append('marque_id', select.marque)
-            select.genre && dataFile.append('genre', select.genre)
-            select.decennie && dataFile.append('decennie', select.decennie)
-            select.vinyle && dataFile.append('vinyle_id', select.vinyle)
-            dataFile.append('userid', state.userid)
-            dataFile.append('price', article.price)
-        //on ajoute un par un les fichiers de notre front pour les orienter vers notre bdd via notre back end 
-            
-            
-            
-        
-            axios.post(`${BASE_URL}/modifyArticle/${articleId}`,dataFile)
-            .then((res) => {
-                if(res.data.response){
-                    navigate(`/articledetails/${articleId}`)
-                // success
-                } else {
-                setMsg(res.data.msg)
+        if(!inputsLength(article.title,63)){
+            setMsg("Votre titre est trop long")
+        }else{ 
+            if(!inputsLength(article.description,450)){
+                setMsg("Votre description est trop longue")
+            }else{
+                if(!inputsLength(article.price,7)){
+                   setMsg("Votre prix est trop important") 
                 }
-                })
-                .catch((err) => {
-                console.log(err)
-                })
-            }
-            
+                else{
+    
+                    axios.post(`${BASE_URL}/modifyArticle/${articleId}`,dataFile)
+                    .then((res) => {
+                        if(res.data.response){
+                            navigate(`/articledetails/${articleId}`)
+                        // success
+                        } else {
+                        setMsg(res.data.msg)
+                        }
+                        })
+                        .catch((err) => {
+                        console.log(err)
+                        })
+    
+                }    
+            }    
+        }            
+    }
+          // On envoie les informations à la bdd pour les modifications réalisés via notre updatecat et notre modify submit et on appelle ens uite le rendu de la mise à jour de ces nouvelles data  
     
     return (
         <div className="modify_container">
@@ -187,13 +206,13 @@ const ModifyArt = () => {
                     <input type='submit' value='Ajouter vos modifications' />
                     { msg !== ""  && <p> {msg} </p> }
                     
-                    <DeleteArt  articleId ={articleId} picture={picture}/> 
+                    
                 </form>
             </Fragment>
                                         
             }
                          
-                
+            <DeleteArt  articleId ={articleId} picture={picture}/>     
                 
     
         </Fragment>

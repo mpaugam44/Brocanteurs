@@ -20,16 +20,14 @@ const showForm = (req, res) => {
     })
 }
 
-
-
 const addArticle = (req, res) => {
 
     const form = formidable({keepExtensions: true});
-    const maxSize = 6000000;
+    const maxSize = 5000000;
     const acceptedExt = ['jpeg', 'jpg', 'png', 'gif']
     
     form.parse(req, async (err, fields, files) => {
-        
+       if (err) throw err;
         const newFilename = files.files.newFilename;
         const oldPath = files.files.filepath;
         const newPath = `public/img/${newFilename}`;
@@ -42,7 +40,7 @@ const addArticle = (req, res) => {
         }
         else {
             if(file.size > maxSize) {
-               res.json({response: false, msg: 'Le fichier ne doit pas dépasser 6 mo'}) 
+               res.json({response: false, msg: 'Le fichier ne doit pas dépasser 5 mo'}) 
         
         
             }else {

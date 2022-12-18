@@ -38,6 +38,9 @@ const Login = () => {
             console.log(err);
         })
     };
+    
+    //Envoi des informations via le formulaire et si elles sont vérifiées
+    // On ouvre la session via le axios post et l'accès à une session de type LOGIN
     return (
         <div className="connexion_container">
             <h2 className="title_form" >Formulaire de Connexion</h2>
@@ -46,9 +49,9 @@ const Login = () => {
                 <input className="input_co" type="email" value={email}  required onChange={(e) => setEmail(e.target.value)} />
                 </label>
                 <label>Password : 
-                <input className="input_co" type="password" value={password} required  onChange={(e) => setPassword(e.target.value)}/>
+                <input className="input_co" type="password" value={password} auto-complete="current-password"  onChange={(e) => setPassword(e.target.value)} required />
                 </label>
-                <input type="submit" value="valider"/>
+                <input type="submit" value="Valider"/>
             </form>
         </div>
     );

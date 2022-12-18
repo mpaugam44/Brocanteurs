@@ -25,7 +25,7 @@ const ArticleDetails = () =>{
     useEffect(() => {
         if(articleId) {
             getInfos()
-            // console.log(articleId)
+            
         }  
     }, [articleId]) 
 
@@ -65,9 +65,7 @@ const ArticleDetails = () =>{
         .catch((err) => {
             console.log(err)
         })
-        .then(() => {
-           
-        })
+        
     } 
     // à chaque ouverture de page on aura un rafraichissement auto de l'article
     
@@ -88,7 +86,7 @@ const ArticleDetails = () =>{
                 </div>
                 <div className="text_article">
                     <div>{article.date}</div>
-                    <div>Description:{article.description}</div>
+                    <div className="description_container">Description: {article.description}</div>
                     <div>{article.categories_name}</div>
                     <div>{article.marque_name}</div>
                     {article.id_vinyle && 

@@ -23,7 +23,8 @@ const ShowArticles = () => {
             console.log(err);
         })   
     },[])
-    
+     //Ici dans ce composant nous venons chercher toutes les informations de nos articles dans la bdd 
+     //pour les return dans notre front en mapant chacun de nos articles et les informations qu'on souhaitent montrer sur le site
     
     return (
         <Fragment>
