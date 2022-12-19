@@ -2,7 +2,7 @@ import {Fragment} from 'react'
 import { NavLink } from "react-router-dom";
 
 
-// Ici nous appelons juste notre composant NavCategorie que nous allons elle même appelerdans la nav principale.
+// Ici nous appelons juste notre composant NavCategorie que nous allons elle même appeler dans la nav principale.
 // Seulement à l'état de user conecté.
 const NavCategorie = () => {
     
@@ -13,22 +13,22 @@ const NavCategorie = () => {
     <Fragment>
        
             <li className="navbar_item">
-                <NavLink className="link" to ="categorie/2">
+                <NavLink title="Redirection vers page Enceintes"className="link" to ="categorie/2">
                     Enceintes
                 </NavLink>
             </li>    
             <li className="navbar_item">
-                <NavLink className="link" to ="categorie/3">
-                    Ampli
+                <NavLink title="Redirection vers page Amplis" className="link" to ="categorie/3">
+                    Amplis
                 </NavLink>
             </li> 
             <li className="navbar_item">
-                <NavLink className="link" to ="categorie/4">
-                Tournedisque
+                <NavLink title="Redirection vers page Tournedisques"className="link" to ="categorie/4">
+                Tournedisques
             </NavLink>
             </li>
             <li className="navbar_item">
-                <NavLink className="link" to ="categorie/5">
+                <NavLink title="Redirection vers page Vinyles" className="link" to ="categorie/5">
                     Vinyles
                 </NavLink>
             </li>

@@ -32,6 +32,6 @@ const Middleware = ({children}) => {
 }
 
 
-// Une sécurité d'accès aux urls user ou à ceux de l'admin en vérifniant la bonne url.
+// Une sécurité d'accès aux urls user ou à ceux de l'admin en vérifiant la bonne url.
 
 export default Middleware;

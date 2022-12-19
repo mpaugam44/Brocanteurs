@@ -16,9 +16,9 @@ const AllComs = ({commentaire, user_id}) => {
         <Fragment>
             {coms[0] && coms.map((e,i) => 
                 <div className="coms_container" key={i}>
-                    <div>Name:{e.name}</div>
+                    <div>{e.name}</div>
                     <div className="description_container">Description:{e.description}</div>
-                    <div>Date:{e.date}</div>
+                    <div>{e.date}</div>
                 {state.userid === user_id &&
                     <div>Email:{e.email}</div>
                 }

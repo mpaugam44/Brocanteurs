@@ -34,7 +34,7 @@ const Register = () => {
                 
                     axios.post(`${BASE_URL}/register`, data)
                     .then((res) => {
-                        console.log(res);
+                       
                         if(res.data.response === true) {
                             navigate("/login")
                         } 

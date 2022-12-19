@@ -62,7 +62,7 @@ const GetCategorie   = () => {
                             </div>
                             <div className="text_article">{e.date}</div>
                             <div className="text_article">{e.price} €</div>
-                             <NavLink to = {`/articledetails/${e.id}`}>
+                             <NavLink title="Redirection vers page details" to = {`/articledetails/${e.id}`}>
                             Voir details
                             </NavLink>
                         </div>

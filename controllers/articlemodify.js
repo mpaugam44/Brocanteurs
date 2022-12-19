@@ -96,7 +96,9 @@ const modifyArticle = (req, res) => {
 
 
     
-
+// Dans le controller de modification de l'article, nous allons tout d'abord appeler chaque nouvelles const qui va remplacer les informations que l'on souhaite modifier 
+//Pool.query chacune des ces nouvelles informations en passant par une vérification de sécurité sur la taille des fichiers et le type. 
+// Si la vérif est bonne et que l'user désire changer la photo nous allons alors changer l'ancienne par la nouvelle.
 
 
 export {modifyArticle} ;

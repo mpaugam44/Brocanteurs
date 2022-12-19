@@ -177,7 +177,7 @@ const ModifyArt = () => {
             {state.userid === article.user_id &&
            
            <Fragment>
-            <button onClick={() =>navigate(`/articledetails/${articleId}`)} > Retour à l'article </button> 
+            <button className="return" onClick={() =>navigate(`/articledetails/${articleId}`)} > Retour à l'article </button> 
             
             
                 <form onSubmit={modifySubmit} encType="multipart/form-data">
@@ -187,7 +187,7 @@ const ModifyArt = () => {
                         <input type='text' value={article.title} required onChange={(e) => setArticle({...article,title:e.target.value})} />
                     </label>
                     <label>
-                        Description
+                        
                          <textarea type='text' placeholder="Veuillez ajouter votre description" value={article.description}  onChange={(e) => setArticle({...article,description:e.target.value})} required >
                          </textarea>
                          
@@ -212,7 +212,7 @@ const ModifyArt = () => {
                                         
             }
                          
-            <DeleteArt  articleId ={articleId} picture={picture}/>     
+            <DeleteArt className="delete_article" articleId ={articleId} picture={picture}/>     
                 
     
         </Fragment>

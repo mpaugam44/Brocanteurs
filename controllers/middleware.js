@@ -47,4 +47,7 @@ const middleware = async (req, res, next) => {
     }
 }
 
+
+
+//Notre sécurité en async back end en vérifiant comme dans le front la viabilité de l'url
 export default middleware

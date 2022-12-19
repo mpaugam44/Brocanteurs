@@ -18,5 +18,7 @@ const allArticlesFromCat = (req, res) =>{
     })    
 }
 
+// On sélectionne toutes les infos des catégories pour les appeler dans chacunes des catégories de notre bdd dans le front 
+
 
 export {allArticlesFromCat} ;

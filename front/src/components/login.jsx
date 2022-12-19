@@ -45,10 +45,10 @@ const Login = () => {
         <div className="connexion_container">
             <h2 className="title_form" >Formulaire de Connexion</h2>
             <form className="form_container"onSubmit={submit}>
-                <label>Mail : 
+                <label>Email: 
                 <input className="input_co" type="email" value={email}  required onChange={(e) => setEmail(e.target.value)} />
                 </label>
-                <label>Password : 
+                <label>Mot De Passe: 
                 <input className="input_co" type="password" value={password} auto-complete="current-password"  onChange={(e) => setPassword(e.target.value)} required />
                 </label>
                 <input type="submit" value="Valider"/>

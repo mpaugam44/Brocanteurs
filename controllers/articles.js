@@ -16,5 +16,5 @@ const showArticle = ( req, res) => {
     })
     
 }
-
+//On selectionne chaque information de nos articles pour les appeler dans le front.
 export {showArticle};

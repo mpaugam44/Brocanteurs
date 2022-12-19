@@ -66,7 +66,7 @@ const AddComs = () => {
                            Email
                             <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
                         </label>
-                        <input type='submit' value='Ajouter votre commentaire' />
+                        <input className="addcom_input" type='submit' value='Ajouter votre commentaire' />
                         { msg !== ""  && <p> {msg} </p> }
                 </form>
             </div>   

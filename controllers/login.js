@@ -8,7 +8,7 @@ const getUserData = async (email) => {
     
     return userDataSQL[0]
 }
-
+//Ici on recupère la data de notre user dans la table sql users
 
 const generateResponse = async (userDataSQL) => {
     const admin = userDataSQL.role_id === 1 
@@ -23,6 +23,8 @@ const generateResponse = async (userDataSQL) => {
     return {response:true, user,admin,id,name, token}
 }
 
+//On attend avec l'asychrone une réponse au statut du type de token de l'user data
+
 const connexionSubmit = async (req, res) => {
     const {password, email} = req.body
     const failJson = {response:false, message:"identifiant ou mot de passe incorrect"}
@@ -33,5 +35,7 @@ const connexionSubmit = async (req, res) => {
     
     res.json(response)
 }
+
+//On éxécute la connexion ou non de l'user selon si son mot de passe par comparaison correspond aux infos dans la bdd
 
 export default connexionSubmit;

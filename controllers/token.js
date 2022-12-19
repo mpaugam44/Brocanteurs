@@ -22,3 +22,6 @@ export const verifyToken = async (token) => {
         return undefined
     }
 }
+
+
+//Nous paramétrons notre token en async pour l'acceptation ou non de l'entrée dans une session

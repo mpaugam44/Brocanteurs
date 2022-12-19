@@ -10,4 +10,7 @@ const isLogged = async (req,res) => {
     }
 };
 
+// on appelle ce controller dans le axios.post de la nav pour regénérer un token 
+// qui valide la session après rafraichissement de la page 
+
 export { isLogged};

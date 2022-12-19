@@ -45,7 +45,7 @@ const Nav = (props) => {
     
     <header> 
       <div className="navbar_NAME">
-          <NavLink to="/">
+          <NavLink title="Redirection vers page Home" to="/">
               La Brocante du Flux
           </NavLink>
       </div>
@@ -55,19 +55,18 @@ const Nav = (props) => {
               
           {!state.login &&
             <Fragment>
-             
               <li className="navbar_item">
-                  <NavLink className="link" to="/register">
-                  Register
+                  <NavLink title="Redirection vers page inscription"className="link" to="/register">
+                  Inscription
                   </NavLink>
               </li>
               <li className="navbar_item">
-                <NavLink className="link" to="/login">
-                  Login
+                <NavLink title="Redirection vers page connexion "className="link" to="/login">
+                  Connexion
                 </NavLink>
               </li>
               <li className="navbar_item">
-                <NavLink className= "link" to="/articles">
+                <NavLink title="Redirection vers page Articles"className= "link" to="/articles">
                   Articles
                 </NavLink>
               </li>
@@ -77,18 +76,18 @@ const Nav = (props) => {
             {state.login && 
               <Fragment>
                 <li className="navbar_item">
-                  <NavLink  className ="link" to="/addArticle">
+                  <NavLink title="Redirection vers page ajout d'article" className ="link" to="/addArticle">
                     Ajout d'article
                   </NavLink>
                 </li>
                  <li className="navbar_item">
-                  <NavLink className ="link" to="/articles">
+                  <NavLink title="Redirection vers page articles"className ="link" to="/articles">
                     Articles
                   </NavLink>
                 </li>
                 <Navcategorie/> 
                 <li className="navbar_item">
-                    <NavLink className ="link" to="/logout">
+                    <NavLink  title="Redirection vers page home"className ="link" to="/logout">
                       Deconnexion
                     </NavLink>
                   </li>
@@ -97,8 +96,8 @@ const Nav = (props) => {
               }
               {state.admin && 
                 <li className="navbar_item">
-                  <NavLink  className ="navbar_link" to="/admin">
-                    ADMIN
+                  <NavLink  title="Redirection vers page admin"className ="link" to="/admin">
+                    Admin
                   </NavLink>
                 </li>
               }

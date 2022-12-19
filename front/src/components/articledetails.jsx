@@ -81,7 +81,7 @@ const ArticleDetails = () =>{
  
             <div className="details_container">
                <div className="title_article">{article.title}</div>
-                <div className="image_article">{article.pictures}
+                <div  className="image_article_details">{article.pictures}
                 { picture && <img  alt={`${article.title} Image d'article`} src={`http://martinpaugam.sites.3wa.io:9300/img/${picture}`} />}
                 </div>
                 <div className="text_article">
@@ -104,7 +104,7 @@ const ArticleDetails = () =>{
                 <AllComs commentaire={commentaire} user_id={article.user_id} />
                 
                 { (state.userid === article.user_id || state.admin) && 
-                <NavLink className={"multiple_redirect"} to = {`/modifyArticle/${article.id}`}>
+                <NavLink  title="Redirection vers page modification"className={"multiple_redirect"} to = {`/modifyArticle/${article.id}`}>
                     Modifier/Supprimer article
                 </NavLink>
                 }

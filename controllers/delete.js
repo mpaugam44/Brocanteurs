@@ -39,5 +39,6 @@ const deleteArticle = (req, res) => {
     })
 }
 
+// notre controller pour delete notre article avec ses commentaires, sa photo via leurs id.
 
 export {deleteArticle}

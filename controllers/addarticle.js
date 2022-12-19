@@ -66,12 +66,12 @@ const addArticle = (req, res) => {
                                     fs.copyFile(oldPath, newPath, (err) => {
                                         if (err) throw err;
                                                     res.json({response:true})
-                                            })
-                                        })
+                                    })
+                                })
                             })
                         })
                     }
-                }
+            }
         }    
     })
     

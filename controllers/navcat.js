@@ -18,4 +18,6 @@ const navCat = (res,req) => {
     
 }
 
+//On sélectionne toutes les infos des catégories pour les appeler ensuite grâce au pool.query dans le front
+
 export {navCat}

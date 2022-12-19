@@ -18,4 +18,6 @@ const showComs = ( req, res) => {
     
 }
 
+//On sélectionne tout les infos du commentaire qui correspond à l'id de l'article dans lequel on se trouve.
+
 export {showComs};

@@ -4,7 +4,7 @@ import {inputsLength} from '../components/inputLength/index.js'
 
 
 const register = (req,res) => {
-    console.log(req.body)
+    
     const saltRounds = 10;
     let emailIsPresentSQL = "SELECT email FROM users WHERE email = ?"
     let AddUserSQL= "INSERT INTO users (email, password, role_id) VALUES (?, ?, 2)"
@@ -35,6 +35,6 @@ const register = (req,res) => {
     
 };
 
-
+// Ici nous éxécutons les requêtes nécessaires pour ajouter un user à la bdd
 
 export default register;

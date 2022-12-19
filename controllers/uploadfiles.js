@@ -9,6 +9,7 @@ const checkAcceptedExtensions = (file) => {
 	}
 	return false
 }
+//On appelle notre cont qui va vérifier les formats que l'on souhaite accepter
 
 const uploadFile = (req, res) => {
     const form = formidable({keepExtensions: true});
@@ -48,5 +49,5 @@ const uploadFile = (req, res) => {
     })
 }
 
-
+// Ici grâce à formidable nous allons pouvoir charger un fichier photo en l'intégrant à notre espace public
 export default uploadFile

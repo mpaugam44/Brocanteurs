@@ -98,7 +98,7 @@ const Addarticle = () => {
                 <input type='text' value={titre} onChange={(e) => setTitre(e.target.value)} required/>
             </label>
             <label>
-                Description
+                
                 <textarea type='text' placeholder="Veuillez ajouter votre description" value={description} onChange={(e) => setDescription(e.target.value)} required> </textarea>
             </label>
             <div className="label_uniform">
@@ -112,7 +112,7 @@ const Addarticle = () => {
             </label>
             <Selection updateForm={updateCat} />
             
-            <input type='submit' value='Ajouter votre produit' />
+            <input className="add_product" type='submit' value='Ajouter votre produit' />
             
             { msg !== ""  && <p className="msg_alerte"> {msg} </p> }
             

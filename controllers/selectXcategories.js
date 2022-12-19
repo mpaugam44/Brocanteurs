@@ -29,5 +29,7 @@ const  selectSubCategories = ( req, res) => {
     
 }
 
+//Ici nous appelons les requêtes sql  nécessaires pour pouvoir générer la data de notre selectXcategories
+// Puis on les pool.query pour autoriser une connexion entre le front et la bdd
 
 export default selectSubCategories ;

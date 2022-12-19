@@ -65,13 +65,15 @@ body {
   
 }
 h1{
-  font-family:"Avenir Medium";
+  font-family:"Baloo Regular";
   font-weight: bold;
-  display:block;
   margin-top:10vh;
+  padding-top:1.5vh;
+  padding-bottom:1.5vh;
+  font-size:2em;
+  
   
   }
-
 
 h2{
   display:flex;
@@ -83,13 +85,18 @@ p{
   padding-top:1vh;
   color: var(--nav-color);
   font-weight:bold;
+  padding-left:1.2vw;
   }
 
 a {
   color: inherit;
   text-decoration: none;
   font-size:1.7em;
+  transition: 0.3s all ease;
 }
+a:hover  {
+    color:var(--main-bg-color);
+  }
 
 
 nav {
@@ -122,10 +129,18 @@ header{
 /**********************HOME*************************/
 
 .home_container{
-  gap:5vh;
+ display:flex;
+ flex-direction:column;
+ padding:0.8em;
 }
-
-
+ 
+ .home_container p{
+   font-style:italic;
+   
+ }
+ 
+  
+  
 /***********************NAV*********************************/
 
 
@@ -164,7 +179,6 @@ header{
   width:80vw;
   border-bottom:0.2em solid #fff;
   border-top:0.2em solid #fff;
- /* line-height:1.8em;*/
   margin-right:0.5rem;
   color:white;
   cursor:pointer;
@@ -175,28 +189,31 @@ header{
   
 }
 
-button.navbar_button{
-  height:3em;
-  width:3em;
+
+.navbar_button{
+  height:2.9em;
+  width:2.9em;
   display:block;
   position:absolute;
-  right:0.2em;
-  top:0.2em;
+  right:0.5em;
+  top:0.3em;
   cursor:pointer;
   color:var(--nav-color);
   background-color:var(--main-bg-color);
   font-family: "Baloo Medium";
   transition : 0.5s all ease-out;
+  
 }
 
 
 
 .navbar_NAME{
-  font-size:1.2em;
+  font-size:1.25em;
   display:flex;
-  padding-left:3vw;
+  padding-left:2.5vw;
   color:var(--main-bg-color);
   font-weight:bold;
+  padding-top:0.5vh;
 
  
 }
@@ -208,15 +225,6 @@ button.navbar_button{
 
 
 
-a.active {
-  
-}
-/*a.active:hover  {
-    color: var(--hover-nav-li) ;
-    transition: 0.5s all ease out;
-  }*/
-
-
 a.link{
    transition: 0.4s all ease;
 }
@@ -224,23 +232,12 @@ a.link{
 
 
 
-
-
-/*NAV LOGIN*/
-
-
-
-
-
-/*NAV ADMIN*/
-
 /**********************FORM*************************/
 
 form {
   padding: 2em 1.7em;
   display:flex;
   flex-direction: column;
-  justify-content: center;
   /*transition: all 0.3s ease 0s;*/
   gap:2.5vh;
   
@@ -353,10 +350,11 @@ input[type=submit] {
 
 
 .input_co{
-  width:18em;
-  margin-left:1em;
+  width:80vw;
   display:flex;
   flex-direction:column;
+  font-size:0.85em;
+
 }
 
 .connexion_container{
@@ -365,9 +363,11 @@ input[type=submit] {
 }
 
 .title_form{
-  padding-left:3vw;
+
   padding-top:3vh;
   font-size:1.4em;
+  display:flex;
+  justify-content:center;
 }
 
 
@@ -435,6 +435,8 @@ input[type=submit] {
  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
  padding-bottom:1.6vh;
  border-bottom:2.5px solid rgba(62, 74, 123, 0.4) ;
+ padding-left:1vw;
+ padding-right:1vw;
 }
 
 
@@ -495,14 +497,17 @@ input[type=submit] {
   gap:1vh;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   padding:1.5vh;
-  border-bottom:2.5px solid rgba(62, 74, 123, 0.4) ;
+  border-bottom:3px solid rgba(62, 74, 123, 0.4) ;
   text-transform:capitalize;
   
 }
 
 
-.addcom_container{
- 
+.image_article_details{
+  object-fit: cover;
+  display: flex;
+  object-position: top left;
+  overflow:auto;
 }
 
 .coms_container{
@@ -540,47 +545,192 @@ input[type=submit] {
 
 
 /****************************TABLETTE***********************************/
-/*
-@media screen and (min-width :540 px){
+
+@media only screen and (min-width: 620px) {
   
   
+  h1 {
+    font-size:2em;
+    
+  }
+   
+   .home_container{
   
-}*/
+     font-size:1.5em;
+   }
+   
+   .navbar_NAME{
+     
+     font-size:2.2em;
+   }
+   
+   
+   .navbar_button{
+     height:5em;
+     width:5em;
+     right:0.8em;
+   }
+
+   
+    .navbar_links{
+      font-size:1.4em;
+      
+    }
+    
   
+      form{
+        font-size: 1.2em;
+      }
+    
+      form input{
+       width:55vw;
+       
+     }
+     
+     select{
+       width:60%;
+     }
+     
+     
+     button, input[type=submit]{
+      display: flex;
+      justify-content: center;
+      width:50vw;
+
+     }
+     
+     form.add_container{
+       display:flex;
+       justify-content:center;
+       padding:0em, 1,8em;
+     }
+  
+      .return{
+        width:100%;
+      }
+
+      .delete_article{
+        font-size:1.3em;
+      }
+    
+    .articles_container{
+      
+      font-size:1.3em;
+    }
+    
+    .image_article{
+      display:flex;
+      justify-content:center;
+    }
+    
+}  
+
+ 
 /****************************DECKSTOP***********************************/
 
-/* @media screen and (min-width : 900px){
+ @media only screen and (min-width : 960px){
+   
   
+  .home_container{
+    margin-top:5vh;
+  }
   
+  .navbar{
+    margin-top:5vh;
+  }
   
- 
-  .navbar_links{
+  .navbar_NAME{
+   top:0.2em;
+   font-size:1.8em;
+  } 
     
-    width:80vw;
+  .navbar_button{
+    height:4.3em;
+     width:4.3em;
+    
+  }
+  
+  a.link{
+    font-size:1.3em;
+  }
+   
+   
+  .inscription_container form{
+    align-items:center;
+    
+  } 
+  
+  .connexion_container form{
+    align-items:center;
+  }
+   
+   
+  .articles_container{
+    width: 100%;
+	  height: 90vh;
+    display:grid ;
+    grid-template-columns: 1fr 1fr ;
+    padding-left:2vw;
+    padding-right:2vw;
+   
+  }
+  
+  .article_container{
+    height:75vh;
+    overflow:hidden;
+    margin-top:3vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    
+    
+  }
+  
+  .image_article{
+    padding-left:1.5vw;
+    padding-right:1.5vw;
+    max-height:50%;
     display:flex;
     justify-content:center;
-    align-items:center; 
+  }
+  .image_article img {
+    object-fit:contain
+  }
+  
+  .title_article{
+    margin-top:3vh;
+    font-size:1.9em;
+  } 
+  
+  .details_container{
+    font-style:1.2em;
+  }
    
-    flex-direction:row;
+   .image_article_details {
+    width:100%;
+    display:flex;
+    justify-content:center;
+
+  } 
+  
+  .image_article_details img {
+    max-width:40%;
+  } 
+  
+  .text_article{
+    font-size:1.2em;
+  }
+  
+  
+  .addcom_container form{
+    font-size:1.4em;
     
   }
-  .navbar_button{
-    display:none;
+  
+  .coms_container{
+    font-size:1.4em;
   }
+  
 
-.navbar_item{
-  width:auto;
-  margin-right:0.5rem;
-  color:white;
-  cursor:pointer;
-  display:flex;
-  justify-content:center;
-  align-items:center; 
-  flex-direction:row;
-}
 
 }
-
-
-*/
-

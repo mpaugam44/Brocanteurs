@@ -27,6 +27,8 @@ export const reducer = (state, action) => {
     }
 }
 
+// Le reducer permet de modifier les données du context 
+
 
 export const ReducerContext = React.createContext([])
 

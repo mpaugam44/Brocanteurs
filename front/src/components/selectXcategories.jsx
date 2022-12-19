@@ -20,6 +20,7 @@ const Selection=({updateForm, value})=>{
     const [decennies, setDecennies] = useState([]);
     const [marques, setMarques] = useState([]);
     
+    //On appelle ici tout nos states nécessaires pour aller selectionner les informations qu'on va utiliser pour le addarticle
     
     useEffect(() => {
         if(value){
@@ -45,13 +46,15 @@ const Selection=({updateForm, value})=>{
         })
     },[])
     
+    // On récupère grâce à notre axios get les datas de l'article qu'on va ensuite ajouter grâce au addarticle vers la bd
+    
     const handleChange = (value, type) => {
         const data = {
             ...allData
         }
         data[type] = value
         if(type === 'categorie' && value !== '5'){
-            // setAllData({...allData, vinyle: '', genre:''})
+            
             data['vinyle'] = ''
             data['genre'] = ''
         } else if (type === 'categorie' && value ==='5'){
@@ -63,6 +66,8 @@ const Selection=({updateForm, value})=>{
         updateForm(data)
     }
     
+    //On permet à notre select de prendre la la bonne la bonne value pour les categories qui découlent elles mêmes vers d'autres catégories.
+    // Dans le return on recupere alldata de chaque categorie en dévelppant un rendu conditionnel pour chacune des catégories qui va inclure une autre catégories ou non.
     
     return (
         

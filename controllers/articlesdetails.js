@@ -1,4 +1,3 @@
-import fs from 'fs'
 import {pool ,asyncQuery } from '../config/database.js'
 
 const host = "http://http://martinpaugam.sites.3wa.io:9001/"
@@ -14,7 +13,6 @@ const articleDetails = async(req, res) => {
     let getComs = 'SELECT * FROM commentaire WHERE article_id = ?  '
     
     const article = await asyncQuery (thisArticle , [id])
-    console.log(article)
     const url = await asyncQuery ( getUrl , [id])
     const commentaire = await asyncQuery ( getComs,[id] )
     const articleVinyle = await getVinyle(article)
@@ -95,5 +93,9 @@ const AddComs = (req, res) => {
 }
 
   
+  
+  //Dans ce controller on récupère toutes les infos de l'article que l'on souhaite pour accéder à ses informations en détails 
+  // Grâce à notre const asyncquery , on peut de façon asynchrone récupérer chaque informations de l'article l'une après l'autre.
+  //Puis nous ajoutons dans la base de données les valeurs de ce qui a été rédigé dans le commentaire par l'utlisateur.
 
 export {articleDetails , AddComs}
