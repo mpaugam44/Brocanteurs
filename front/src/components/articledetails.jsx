@@ -32,7 +32,7 @@ const ArticleDetails = () =>{
     const path = useLocation();
 
     const getParams = () => {
-        // console.log(path)
+       
         const pathTable = path.pathname.split('/');
         // split des éléments de l'url pour les mettre dans un tableau
         const id = pathTable[pathTable.length-1];
@@ -49,7 +49,7 @@ const ArticleDetails = () =>{
         // ce get ne sert qu'à aller chercher notre articleId et ce qu'il contient
         .then((res) => {
             if(res.data.response){
-                 console.log(res.data)
+                
                 setArticle(res.data.article[0])
                 setPicture(res.data.url[0].url)
                 setCommentaire(res.data.commentaire)
@@ -57,9 +57,6 @@ const ArticleDetails = () =>{
                 
                 // on va chercher le setArticle car le setArticleId est déjà chargé par la fonction getParams
                 
-            } else {
-                console.log(res.data.message)
-            
             }
         })
         .catch((err) => {
@@ -104,7 +101,7 @@ const ArticleDetails = () =>{
                 <AllComs commentaire={commentaire} user_id={article.user_id} />
                 
                 { (state.userid === article.user_id || state.admin) && 
-                <NavLink  title="Redirection vers page modification"className={"multiple_redirect"} to = {`/modifyArticle/${article.id}`}>
+                <NavLink  title="Redirection vers page modification et suppression"className={"multiple_redirect"} to = {`/modifyArticle/${article.id}`}>
                     Modifier/Supprimer article
                 </NavLink>
                 }

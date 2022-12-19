@@ -1,0 +1,67 @@
+Projet " La Brocante du Flux" 
+
+Fonctionnalités unlogged: 
+
+- Home 
+Côté Front: Simple page d'introduction et explicative du site.
+- Nav
+( accesible  en partie via le côté unlogged mais détaillé du côté logged)
+
+- Inscription: 
+Côté front: Composant formulaire avec sécurisation des inputs 
+Côté Back: Controller avec récupération des données , vérifications de ces mêmes données et ajout de 
+ce nouvel utilisateur vers notre BDD. 
+
+- Connexion: 
+Côté front: Composant formulaire avec sécurisation des inputs 
+Côté Back: Controller qui récupère les infos et ouvre une session si les données sont vérifiés par la sécurisation. 
+
+- Articles: 
+Côté front: Composant type rendu de données  récupéré de la BDD avec un rendu des infos que l'on souhaite afficher
+Côté Back: Controller qui nous permet d'avoir accès aux données que l'on veut afficher dans le front
+
+- Articles details 
+( accesible via le côté unlogged mais détaillé du côté logged)
+
+
+
+Fonctionnalités isLogged: 
+
+
+-Selection de catégorie:
+Côté Front: Composant qui nous permet de préremplir les différents selecct que l'on va afficher dans notre jaout d'article que l'on va appeler ensuite dans l'ajout d'article
+Côté Back: Controller où l'on va chercher toutes les infos de ce que l'on veut ajouter à notre article. 
+
+- Ajout d'articles: 
+Côté front: Composant de type formulaire où l'on va détailler le produit, son genre et la marque potentiellement.
+La catégorie, une photo, décennie,titre et une description 
+Côté Back: Controller qui vérifie les informations transmises et les ajoute à la BDD
+
+- NavCatégorie: 
+Côté front: Composant qui affiche les articles correspondant à sa catgéoriente
+Côté Back: Controller qui va récupérer tout les articles 
+
+Ajout de commentaire: 
+
+Côté Front: Composant de type formulaire qui va nous permettre de laisser un com à l'article de son choix 
+Côté Back : Controller qui nous permet d'ajouter les détails du commenatire à la bdd
+
+Commentaires: 
+Côté Front: On fait le rendu de tout les data des commentaires pour chaque user. 
+Côté Back : Controller qui récupère dans la BDD les infos de la table commentaire que l'on souhaite envoyer vers le front.
+
+
+Modification d'article: 
+Côté front: Composant qui administre la modification des données de notre article via un formulaire pré remplit.
+Côté Back: Controller qui  récupère, vérifie et modifie les données de l'article dans la BDD si les infos sont valides par la sécu.
+
+Delete : 
+Côté front: Composant qui permet via un bouton d'envoyer une requête de toutes  les données de notre article
+Côté Back: Controller qui supprime l'article en sa globalité de la BDD
+
+Fonctionnalité Admin Logged: 
+
+Delete: 
+
+Uniquement dans un esprit de modération pour le bon fonctionnement du site un delete est accessible à chaque compte admnistrateur.
+

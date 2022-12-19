@@ -29,7 +29,6 @@ const connexionSubmit = async (req, res) => {
     const {password, email} = req.body
     const failJson = {response:false, message:"identifiant ou mot de passe incorrect"}
     const userDataSQL = await getUserData(email)
-    console.log(userDataSQL)
     const passwordMatch = userDataSQL ? await bcrypt.compare(password, userDataSQL.password) : null
     const response = (userDataSQL && passwordMatch) ? await generateResponse(userDataSQL, passwordMatch): failJson
     

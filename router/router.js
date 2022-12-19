@@ -1,5 +1,4 @@
 import express from "express";
-
 import registerSubmit from "../controllers/register.js";
 import connexionSubmit from "../controllers/login.js";
 import {isLogged} from "../controllers/isLogged.js";

@@ -14,18 +14,6 @@
 
 
 
-@font-face {
-  font-family: "Avenir Book";
-  src: url('../../public/fonts/avenir/AvenirLTStd-Book.otf');
-  
-}
-
-@font-face {
-  font-family: "Avenir Roman";
-  src: url('../../public/fonts/avenir/AvenirLTStd-Roman.otf');
-  
-}
-
 
 /**********************VARIABLES*************************/
 
@@ -71,21 +59,21 @@ h1{
   padding-top:1.5vh;
   padding-bottom:1.5vh;
   font-size:2em;
+  text-align:center;
   
   
   }
 
-h2{
-  display:flex;
-  
-  
-}
+
 
 p{
   padding-top:1vh;
   color: var(--nav-color);
   font-weight:bold;
-  padding-left:1.2vw;
+  /*padding-left:1.2vw;
+  */
+  
+  text-align:center;
   }
 
 a {
@@ -238,7 +226,6 @@ form {
   padding: 2em 1.7em;
   display:flex;
   flex-direction: column;
-  /*transition: all 0.3s ease 0s;*/
   gap:2.5vh;
   
   
@@ -279,7 +266,6 @@ select option {
     gap:1vh;
     height: auto;
     width: 60vw;
-    /*color: #444;*/
     background: transparent;
     
 
@@ -324,11 +310,13 @@ input[type=file] {
   
   border-style:inherit;
   background-color:inherit;
+  border-radius:3px;
 
 }
 
 input[type=submit] {
   margin-top:3vh;
+  border-style:2px;
  
   
 }
@@ -647,11 +635,10 @@ input[type=submit] {
   .navbar_button{
     height:4.3em;
      width:4.3em;
-    
   }
   
   a.link{
-    font-size:1.3em;
+    font-size:1.1em;
   }
    
    
@@ -703,7 +690,7 @@ input[type=submit] {
   } 
   
   .details_container{
-    font-style:1.2em;
+    font-style:1.35em;
   }
    
    .image_article_details {
@@ -718,7 +705,7 @@ input[type=submit] {
   } 
   
   .text_article{
-    font-size:1.2em;
+    font-size:1.05em;
   }
   
   
@@ -731,6 +718,21 @@ input[type=submit] {
     font-size:1.4em;
   }
   
-
+  
+  a.multiple_redirect{
+    transition: 0.3s all ease;
+  }
+  
+  a.multiple_redirect:hover{
+    color:black;
+  }
+  
+  
+  .return{
+    margin-top:4vh;
+  }
+  .delete_article{
+  margin-top:4vh;
+  }
 
 }

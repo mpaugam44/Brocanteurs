@@ -72,7 +72,7 @@ const Selection=({updateForm, value})=>{
     return (
         
         <div className="select-wrapper">
-            <h3>Choisissez votre catégorie</h3>
+            <h2>Choisissez votre catégorie</h2>
             <label className="label_uniform">
                 Categorie:
                 

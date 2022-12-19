@@ -10,7 +10,6 @@ const DeleteArt = (props) => {
         
         const picture = props.picture
        
-        console.log(props)
         axios.post(`${BASE_URL}/DeleteArticle/${props.articleId}`,{picture} )
         .then((res) =>{
             if(res.data.response){

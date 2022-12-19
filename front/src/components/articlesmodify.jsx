@@ -33,7 +33,7 @@ const ModifyArt = () => {
     
    // On appelle un à un nos states dont on a besoin.
     const getParams = () => {
-        // console.log(path)
+       
         const pathTable = path.pathname.split('/');
         // split des éléments de l'url pour les mettre dans un tableau
         const id = pathTable[pathTable.length-1];
@@ -75,10 +75,7 @@ const ModifyArt = () => {
                 //on fait le .url[0].url pour aller chercher le premier url
                 // on va chercher le setArticle car le setArticleId est déjà chargé par la fonction getParams
                 
-            } else {
-                console.log(res.data.message)
-            
-            }
+            } 
         })
         .catch((err) => {
             console.log(err)
@@ -91,9 +88,9 @@ const ModifyArt = () => {
         setSelect(data)
     }
     
-    //  Remplissage nécessaire imo ? 
+    
     const updateArticle = (data) => {
-        console.log(data)
+      
         const newData = {
             title:data.title,
             description:data.description,
@@ -136,7 +133,7 @@ const ModifyArt = () => {
         select.vinyle && dataFile.append('vinyle_id', select.vinyle)
         dataFile.append('userid', state.userid)
         dataFile.append('price', article.price)
-    //on ajoute un par un les fichiers de notre front pour les orienter vers notre bdd via notre back end 
+    //on ajoute un par un les fichiers de notre formulaire dans un form data 
         
         if(!inputsLength(article.title,63)){
             setMsg("Votre titre est trop long")
@@ -206,8 +203,7 @@ const ModifyArt = () => {
                     <input type='submit' value='Ajouter vos modifications' />
                     { msg !== ""  && <p> {msg} </p> }
                     
-                    
-                </form>
+                 </form>
             </Fragment>
                                         
             }

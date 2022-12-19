@@ -1,4 +1,4 @@
-import {useState, useContext, useEffect} from 'react'
+import {useState, useContext} from 'react'
 import BASE_URL from "../config.js"
 import axios from 'axios'
 import Selection from './selectXcategories.jsx'
@@ -23,7 +23,7 @@ const Addarticle = () => {
     //on préremlit notre select via l'id de nos catégories
     const [msg, setMsg] = useState("")
     const navigate = useNavigate();
-    
+    //on appelle nos const de redirection et de message pour setMsg les erreurs potentielles 
     const updateCat = (data) => {
         setCategories(data)
     }
@@ -33,7 +33,7 @@ const Addarticle = () => {
         const files = {...e.target.picture.files}
         
         const dataFile = new FormData();
-        console.log(categories)
+       // on collecte chaque données de notre article dans une formulaire
         dataFile.append('files', files[0])
         dataFile.append('titre', titre)
         dataFile.append('description', description)
@@ -44,8 +44,7 @@ const Addarticle = () => {
         categories.vinyle && dataFile.append('vinyle', categories.vinyle)
         dataFile.append('userid', state.userid)
         dataFile.append('prix', prix)
-        //on ajoute un par un les fichiers de notre front pour les orienter vers notre bdd via notre back end 
-        
+        //on ajoute un par un les fichiers de notre formulaire dans un form data 
          
         if(!files[0]){
            setMsg("Veuillez fournir une image")
@@ -66,7 +65,7 @@ const Addarticle = () => {
                         .then((res) => {
                             if(res.data.response){
                                 navigate("/articles")
-                                // success
+                                
                             } else {
                                 setMsg(res.data.msg)
                             }
@@ -83,12 +82,8 @@ const Addarticle = () => {
         }            
     }
     
-    // Avant aller mettre les infos des artciles dans la bdd on vérifie via //nos conditions que l'on a bien une image ou alors on setMsg et si //il y a une photo alors on axios post nos données.
+    // On vérifie si les données du formulaire sont conforme si oui on les orienter vers notre back end avec axios.post
     
-    useEffect(()=> {
-        
-        
-    })
    
     return (
         <form className="add_container" onSubmit={submit} encType="multipart/form-data">
@@ -114,8 +109,7 @@ const Addarticle = () => {
             
             <input className="add_product" type='submit' value='Ajouter votre produit' />
             
-            { msg !== ""  && <p className="msg_alerte"> {msg} </p> }
-            
+
             
         </form>
                                

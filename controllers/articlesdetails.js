@@ -7,10 +7,10 @@ const BASE_URL = `${host}:${port}`
 const articleDetails = async(req, res) => {
     const {id} = req.params; 
     
-    let thisArticle = 'SELECT articles.*, DATE_FORMAT(articles.date, "%d/%m/%Y %H:%i") AS date, categories.name AS categories_name, decennie.date AS decennie_date FROM articles JOIN categories ON categorie_id = categories.id JOIN decennie ON decennie_ID = decennie.id WHERE articles.id = ?'
+    let thisArticle = 'SELECT articles.*, DATE_FORMAT(articles.date, "%d/%m/%Y") AS date, categories.name AS categories_name, decennie.date AS decennie_date FROM articles JOIN categories ON categorie_id = categories.id JOIN decennie ON decennie_ID = decennie.id WHERE articles.id = ?'
     
     let getUrl = 'SELECT url FROM pictures WHERE article_id = ? '
-    let getComs = 'SELECT * FROM commentaire WHERE article_id = ?  '
+    let getComs = 'SELECT *,DATE_FORMAT(commentaire.date, "%d/%m/%Y") AS date FROM commentaire WHERE article_id = ?  '
     
     const article = await asyncQuery (thisArticle , [id])
     const url = await asyncQuery ( getUrl , [id])
@@ -19,14 +19,9 @@ const articleDetails = async(req, res) => {
     const articleGenre = await getGenre(articleVinyle)
     const articleMarque = await getMarque(articleGenre)
     
-    
-    
-    
-    res.json({response:true,article:articleMarque, commentaire, url})
+      res.json({response:true,article:articleMarque, commentaire, url})
         
                     
-                
-    
 }  
 
 
@@ -68,8 +63,7 @@ const getMarque = async (data) => {
    
     if(data[0].id_marque){
             const marque =  await asyncQuery( getMarqueName , [data[0].id_marque] )
-            console.log(marque)   
-            return [{...data[0],marque_name:marque[0].name}]
+             return [{...data[0],marque_name:marque[0].name}]
              
     }else{
         

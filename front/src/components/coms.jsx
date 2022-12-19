@@ -10,7 +10,7 @@ const AllComs = ({commentaire, user_id}) => {
          setComs(commentaire)
     },[commentaire])
      
-// explication sur le reducer context
+// On appelle notre const avec notre useState commentaire et notre useContext pour state 
   
     return (
         <Fragment>
@@ -28,5 +28,6 @@ const AllComs = ({commentaire, user_id}) => {
 
     )
 }
+// On return les infos que l'on souhaite et on n'affiche l'email seulement au state.userid  si c'est celui qui a posté l'article.
 
 export default AllComs;

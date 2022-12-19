@@ -1,4 +1,3 @@
-// import fs from 'fs'
 import {pool} from '../config/database.js'
 const host = "http://martinpaugam.sites.3wa.io:9001/";
 const port = 9300;
@@ -29,7 +28,7 @@ const  selectSubCategories = ( req, res) => {
     
 }
 
-//Ici nous appelons les requêtes sql  nécessaires pour pouvoir générer la data de notre selectXcategories
+// Ici nous appelons les requêtes sql  nécessaires pour pouvoir générer la data de notre selectXcategories
 // Puis on les pool.query pour autoriser une connexion entre le front et la bdd
 
 export default selectSubCategories ;

@@ -96,10 +96,8 @@ const Nav = (props) => {
               }
               {state.admin && 
                 <li className="navbar_item">
-                  <NavLink  title="Redirection vers page admin"className ="link" to="/admin">
                     Admin
-                  </NavLink>
-                </li>
+                  </li>
               }
             </ul>
            

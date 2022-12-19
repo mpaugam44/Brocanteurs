@@ -7,11 +7,10 @@ const BASE_URL = `${host}:${port}`;
 
 const showComs = ( req, res) => {
     const {id} = req.params; 
-    let thisCom = ' SELECT * FROM commentaire WHERE article_id = ? '
+    let thisCom = ' SELECT *, DATE_FORMAT(commentaire.date, "%d/%m/%Y") AS date FROM commentaire WHERE article_id = ? '
     
     pool.query( thisCom, [id],( error, commentaire, fields) => {
     
-        console.log(commentaire)
         res.json({response:true,commentaire})
         
     })

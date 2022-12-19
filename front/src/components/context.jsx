@@ -11,6 +11,7 @@ const Provider = ({children}) => {
     )
 }
 
-// Le ReducerContext encadre tout le app.js et permet  aux composants enfants d'avoir à certianes données globales
+// Le ReducerContext encadre tout le app.js et permet  aux composants enfants d'avoir accès à certianes données globales
+// De ce fait nous n'avons pas à appeler chaque composant en props pour faire passer toutes les infos
 
 export default Provider

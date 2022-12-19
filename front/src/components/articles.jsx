@@ -12,12 +12,8 @@ const ShowArticles = () => {
         .then((res) => {
             if(res.data.response){
                setArticles(res.data.articles)
-               
-              console.log(res.data.articles)
             } 
-            else {
-                console.log(res.data.message)
-            }
+            
         })
         .catch((err) => {
             console.log(err);

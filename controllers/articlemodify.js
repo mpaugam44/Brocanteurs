@@ -11,7 +11,7 @@ const modifyArticle = (req, res) => {
     
     const form = formidable({keepExtensions: true});
     const {id} = req.params;
-    const maxSize = 6000000;
+    const maxSize = 5000000;
     const acceptedExt = ['jpeg', 'jpg', 'png', 'gif']
     
     
@@ -57,7 +57,7 @@ const modifyArticle = (req, res) => {
                 }
                 else {
                     if(file.size > maxSize) {
-                    res.json({response: false, msg: 'Le fichier ne doit pas dépasser 6 mo'}) 
+                    res.json({response: false, msg: 'Le fichier ne doit pas dépasser 5 mo'}) 
                 
             
                     }
@@ -80,7 +80,6 @@ const modifyArticle = (req, res) => {
                                     if (newFilename && oldUrl[0].url){
                                         fs.unlink(oldUrlPath, (err) => {
                                             if (err) throw err;
-                                            console.log(oldUrl[0].url)
                                             res.json ({response:true})
                                         })
                                     } 

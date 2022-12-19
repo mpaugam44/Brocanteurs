@@ -1,7 +1,6 @@
 import Home from "../components/home";
 import Login from "../components/login";
 import Register from "../components/register";
-import Admin from "../components/admin";
 import Logout from "../components/logout";
 import AddArticle from "../components/addarticle";
 import ShowArticle from "../components/articles"
@@ -16,7 +15,6 @@ export const routes = [
     { path:'/', element:<Home /> },
     { path:'/register', element:<Register/> },
     { path:'/login', element:<Login /> },
-    { path:'/admin', element:<Admin /> },
     { path:'/*', element:<Error404 /> },
     { path:'/logout', element:<Logout /> },
     { path :'/addArticle', element:<AddArticle/> },
@@ -30,10 +28,16 @@ export const routes = [
 ]
 
 export const userPath = [
-    '/logout' , '/addArticle' , '/navcategorie' 
+    '/logout' , '/addArticle' , '/navcategorie', '/modifyArticle','/DeleteArticle', '/categorie'
 ]
 
 export const adminPath = [
-    "/admin"
+    "/admin",'/DeleteArticle'
 ]
 
+//L'admin n'a que très peu d'accès puisqu'il peut juste supprimer
+//les articles hors du concept du site ou ceux qui auraient pu dépassé 
+//un délai de commentaires
+
+//Sur ce path, nous définissons chaque url correspondant à chaque composant
+// En définissant également sous quel path peut on accéder à certains url type /logout pour le user path

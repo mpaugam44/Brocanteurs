@@ -12,7 +12,7 @@ const register = (req,res) => {
     if(inputsLength([req.body.email, req.body.password])){
        // on exprime la condition de la longueur des inputs via notre fonction qui provient
        // de notre inputLength/index.js
-       // on a pas besoin de préciser la value pour req.body.email et req.body.password car elle st déjà expriméé dans la fonction
+       // on a pas besoin de préciser la value pour req.body.email et req.body.password car elle est déjà expriméé dans la fonction
         pool.query(emailIsPresentSQL, [req.body.email], (error, user, fields) => {
             if (error) throw error;
             

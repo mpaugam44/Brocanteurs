@@ -5,7 +5,6 @@ const Home = () => {
     return (
        
         <div className = "home_container">
-                
             <h1>Un Bazar Digital</h1>
             <p>"Retrouvez vous ici entre passionés du son pour un chinage digital 
             dans le microcosme de la Brocante.</p>

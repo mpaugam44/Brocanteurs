@@ -54,7 +54,7 @@ const addArticle = (req, res) => {
                         const paramsSqlCreatArticle = [fields.titre,new Date(),fields.description,fields.categories,fields.marque,fields.vinyle,fields.prix,fields.userid,fields.decennie_ID,fields.genre_ID]
                         
                         pool.query(sqlCreatArticle,paramsSqlCreatArticle,(error, result) => {
-                            console.log(fields.categories)
+                            
                             if (error) throw error;
                             const sqlGetID = 'SELECT id from articles ORDER BY id DESC LIMIT 1'
                             pool.query(sqlGetID,(error, articleId) => {
@@ -77,5 +77,5 @@ const addArticle = (req, res) => {
     
 }
 
-
+//
 export {showForm, addArticle};
